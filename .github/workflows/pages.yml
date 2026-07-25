@@ -22,15 +22,15 @@ jobs:
 
     steps:
       - name: 저장소 가져오기
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: GitHub Pages 설정 읽기
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Node.js 설치
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
           cache-dependency-path: rust-course-tooling/slides/package-lock.json
 
@@ -61,7 +61,7 @@ jobs:
             --out "$GITHUB_WORKSPACE/_site/tooling/slides"
 
       - name: Pages 배포 파일 올리기
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
@@ -77,4 +77,4 @@ jobs:
     steps:
       - name: GitHub Pages 배포
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
