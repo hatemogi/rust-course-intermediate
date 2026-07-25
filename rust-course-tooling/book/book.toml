@@ -1,0 +1,23 @@
+[book]
+title = "우아한 Rust 중급: 개발 도구"
+authors = ["rust-course-intermediate"]
+description = "Rust 도구 체인, Cargo 프로젝트 관리와 자동 검증을 익히는 한국어 강의 교재"
+language = "ko"
+src = "src"
+
+[build]
+build-dir = "html"
+create-missing = false
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+site-url = "/rust-course-intermediate/tooling/"
+git-repository-url = "https://github.com/hatemogi/rust-course-intermediate"
+edit-url-template = "https://github.com/hatemogi/rust-course-intermediate/edit/main/rust-course-tooling/book/{path}"
+additional-css = ["theme/tooling.css"]
+
+[output.html.playground]
+editable = true
+copyable = true
+line-numbers = true

@@ -1,0 +1,80 @@
+name: GitHub Pages 배포
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: 저장소 가져오기
+        uses: actions/checkout@v4
+
+      - name: GitHub Pages 설정 읽기
+        uses: actions/configure-pages@v5
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: rust-course-tooling/slides/package-lock.json
+
+      - name: mdBook 설치
+        run: cargo install mdbook --version 0.5.4 --locked
+
+      - name: 과정 홈 준비
+        run: |
+          mkdir -p _site
+          cp -R pages/. _site/
+          touch _site/.nojekyll
+
+      - name: 개발 도구 교재 빌드
+        working-directory: rust-course-tooling/book
+        run: mdbook build -d "$GITHUB_WORKSPACE/_site/tooling"
+
+      - name: 슬라이드 의존성 설치
+        working-directory: rust-course-tooling/slides
+        run: npm ci
+
+      - name: 개발 도구 슬라이드 빌드
+        working-directory: rust-course-tooling/slides
+        run: |
+          npm run build -- \
+            episodes/all.md \
+            --base /rust-course-intermediate/tooling/slides/ \
+            --router-mode hash \
+            --out "$GITHUB_WORKSPACE/_site/tooling/slides"
+
+      - name: Pages 배포 파일 올리기
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: GitHub Pages 배포
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">rustc 오류 진단을 읽는 순서</title>
+  <desc id="desc">E0382 오류의 오류 코드, 위치, 문제가 된 값, note와 help를 위에서 아래로 표시한 그림</desc>
+  <style>
+    .sans { font-family: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+    .mono { font-family: "SFMono-Regular", "Cascadia Code", Menlo, monospace; }
+    .label { fill: #55d6c2; font-size: 22px; font-weight: 700; }
+    .body { fill: #eef3f7; font-size: 20px; }
+    .muted { fill: #aebbc7; font-size: 17px; }
+    .code { fill: #eef3f7; font-size: 18px; }
+    .number { fill: #eef3f7; font-size: 15px; font-weight: 800; text-anchor: middle; dominant-baseline: middle; }
+  </style>
+  <rect width="960" height="500" rx="22" fill="#10151c"/>
+  <rect x="36" y="36" width="585" height="428" rx="18" fill="#090d12" stroke="#344556" stroke-width="2"/>
+
+  <circle cx="68" cy="76" r="15" fill="#202c39"/>
+  <text x="68" y="76" class="sans number">1</text>
+  <text x="96" y="84" class="mono code" fill="#ff927e">error[E0382]: borrow of moved value: `message`</text>
+
+  <circle cx="68" cy="121" r="15" fill="#202c39"/>
+  <text x="68" y="121" class="sans number">2</text>
+  <text x="96" y="129" class="mono code">--&gt; moved_value.rs:4:23</text>
+
+  <text x="96" y="185" class="mono code">3 | print_message(message);</text>
+  <text x="438" y="185" class="sans muted">value moved here</text>
+  <text x="96" y="229" class="mono code">4 | println!("다시 출력: {message}");</text>
+
+  <circle cx="68" cy="269" r="15" fill="#202c39"/>
+  <text x="68" y="269" class="sans number">3</text>
+  <text x="96" y="277" class="mono code" fill="#f47b32">  |                         ^^^^^^^</text>
+
+  <circle cx="68" cy="326" r="15" fill="#202c39"/>
+  <text x="68" y="326" class="sans number">4</text>
+  <text x="96" y="334" class="mono code" fill="#f4c95d">note: parameter takes ownership of the value</text>
+
+  <circle cx="68" cy="383" r="15" fill="#202c39"/>
+  <text x="68" y="383" class="sans number">5</text>
+  <text x="96" y="391" class="mono code" fill="#55d6c2">help: consider borrowing or cloning the value</text>
+
+  <g class="sans">
+    <text x="662" y="79" class="label">오류</text>
+    <text x="754" y="79" class="body">코드와 한 줄 설명</text>
+    <text x="662" y="149" class="label">위치</text>
+    <text x="754" y="149" class="body">파일과 줄·열</text>
+    <text x="662" y="219" class="label">표시</text>
+    <text x="754" y="219" class="body">문제가 된 값</text>
+    <text x="662" y="289" class="label">note</text>
+    <text x="754" y="289" class="body">앞서 일어난 이동</text>
+    <text x="662" y="359" class="label">help</text>
+    <text x="754" y="359" class="body">수정 제안</text>
+    <text x="754" y="390" class="muted">의도와 맞는지 검토</text>
+  </g>
+</svg>

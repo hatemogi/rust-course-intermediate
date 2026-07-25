@@ -1,0 +1,15 @@
+[package]
+name = "rust-course-tooling"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+
+[dependencies]
+
+[features]
+default = []
+binary-search = []
+
+[[bench]]
+name = "search"
+harness = false

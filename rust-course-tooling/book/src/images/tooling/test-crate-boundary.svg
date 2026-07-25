@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-labelledby="title desc">
+  <title id="title">단위 테스트와 통합 테스트의 crate 경계</title>
+  <desc id="desc">단위 테스트는 library crate 안에서 비공개 구현까지 검사하고 통합 테스트는 crate 밖에서 공개 API를 호출하는 구조</desc>
+  <style>
+    .sans { font-family: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+    .mono { font-family: "SFMono-Regular", "Cascadia Code", Menlo, monospace; }
+    .heading { font-size: 25px; font-weight: 750; }
+    .body { fill: #eef3f7; font-size: 19px; }
+    .muted { fill: #aebbc7; font-size: 17px; }
+  </style>
+  <rect width="960" height="470" rx="22" fill="#10151c"/>
+
+  <rect x="42" y="130" width="222" height="216" rx="18" fill="#f47b32" fill-opacity=".10" stroke="#f47b32" stroke-opacity=".55" stroke-width="2"/>
+  <text x="153" y="184" class="sans heading" fill="#f47b32" text-anchor="middle">통합 테스트</text>
+  <rect x="76" y="211" width="154" height="48" rx="9" fill="#f47b32" fill-opacity=".12" stroke="#f47b32" stroke-opacity=".3"/>
+  <text x="153" y="242" class="mono body" text-anchor="middle">tests/*.rs</text>
+  <text x="153" y="299" class="sans muted" text-anchor="middle">외부 사용자의 위치</text>
+
+  <text x="324" y="218" class="sans muted" text-anchor="middle">공개 API 호출</text>
+  <path d="M286 252 H368" stroke="#f47b32" stroke-width="4" stroke-linecap="round"/>
+  <path d="M354 238 L370 252 L354 266" fill="none" stroke="#f47b32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="390" y="48" width="528" height="374" rx="20" fill="#55d6c2" fill-opacity=".05" stroke="#55d6c2" stroke-opacity=".55" stroke-width="2"/>
+  <text x="423" y="92" class="mono heading" fill="#55d6c2">library crate</text>
+
+  <rect x="423" y="126" width="216" height="145" rx="14" fill="#19222d" stroke="#344556"/>
+  <text x="447" y="174" class="mono body">fn</text>
+  <text x="447" y="211" class="mono body">normalized_name</text>
+  <text x="447" y="247" class="sans muted">비공개 구현</text>
+
+  <rect x="658" y="126" width="226" height="145" rx="14" fill="#19222d" stroke="#f47b32" stroke-opacity=".58"/>
+  <text x="682" y="174" class="mono body">pub fn</text>
+  <text x="682" y="211" class="mono body">normalize_names</text>
+  <text x="682" y="247" class="sans muted">공개 동작</text>
+
+  <rect x="423" y="291" width="461" height="94" rx="14" fill="#55d6c2" fill-opacity=".10"/>
+  <text x="451" y="330" class="sans heading" fill="#55d6c2">단위 테스트</text>
+  <text x="451" y="361" class="sans muted">같은 crate 안에서 내부 규칙까지 검사합니다.</text>
+</svg>

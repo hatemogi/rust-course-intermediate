@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-labelledby="title desc">
+  <title id="title">한 번의 벤치마크 숫자가 흔들리는 예</title>
+  <desc id="desc">같은 프로그램을 12회 실행했을 때 선형 검색은 7.29에서 8.63 마이크로초, 이진 검색은 0에서 84 나노초 사이에 분포한 점 그림</desc>
+  <style>
+    .sans { font-family: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+    .mono { font-family: "SFMono-Regular", "Cascadia Code", Menlo, monospace; }
+    .heading { fill: #eef3f7; font-size: 25px; font-weight: 750; }
+    .series { fill: #55d6c2; font-size: 22px; font-weight: 750; }
+    .range { fill: #eef3f7; font-size: 21px; }
+    .muted { fill: #aebbc7; font-size: 16px; }
+  </style>
+  <rect width="960" height="470" rx="22" fill="#10151c"/>
+  <rect x="34" y="34" width="892" height="352" rx="18" fill="#090d12" stroke="#344556" stroke-width="2"/>
+  <text x="62" y="81" class="sans heading">같은 프로그램을 12회 실행</text>
+  <text x="898" y="81" class="sans muted" text-anchor="end">각 행은 서로 다른 눈금입니다.</text>
+
+  <text x="62" y="139" class="sans series">선형 검색</text>
+  <text x="62" y="174" class="mono range">7.29–8.63 µs</text>
+  <text x="62" y="261" class="sans series">이진 검색</text>
+  <text x="62" y="296" class="mono range">0–84 ns</text>
+
+  <g stroke="#344556" stroke-opacity=".65">
+    <path d="M250 121 V211 M320 121 V211 M390 121 V211 M460 121 V211 M530 121 V211 M600 121 V211 M670 121 V211 M740 121 V211 M810 121 V211 M880 121 V211"/>
+    <path d="M250 244 V334 M320 244 V334 M390 244 V334 M460 244 V334 M530 244 V334 M600 244 V334 M670 244 V334 M740 244 V334 M810 244 V334 M880 244 V334"/>
+    <path d="M250 211 H880 M250 334 H880"/>
+  </g>
+
+  <g fill="#f47b32" stroke="#ffc19b" stroke-width="2">
+    <circle cx="552" cy="145" r="7"/><circle cx="584" cy="184" r="7"/><circle cx="849" cy="153" r="7"/>
+    <circle cx="502" cy="191" r="7"/><circle cx="414" cy="157" r="7"/><circle cx="426" cy="188" r="7"/>
+    <circle cx="502" cy="150" r="7"/><circle cx="464" cy="177" r="7"/><circle cx="445" cy="139" r="7"/>
+    <circle cx="464" cy="198" r="7"/><circle cx="326" cy="169" r="7"/><circle cx="288" cy="191" r="7"/>
+  </g>
+  <g fill="#55d6c2" stroke="#a0f2e6" stroke-width="2">
+    <circle cx="540" cy="267" r="7"/><circle cx="547" cy="307" r="7"/><circle cx="547" cy="277" r="7"/>
+    <circle cx="547" cy="318" r="7"/><circle cx="547" cy="290" r="7"/><circle cx="836" cy="267" r="7"/>
+    <circle cx="830" cy="307" r="7"/><circle cx="830" cy="279" r="7"/><circle cx="250" cy="298" r="7"/>
+    <circle cx="540" cy="320" r="7"/><circle cx="540" cy="286" r="7"/><circle cx="547" cy="260" r="7"/>
+  </g>
+
+  <g class="mono muted">
+    <text x="250" y="232">7.2</text><text x="565" y="232" text-anchor="middle">8.0</text><text x="880" y="232" text-anchor="end">8.7 µs</text>
+    <text x="250" y="355">0</text><text x="565" y="355" text-anchor="middle">45</text><text x="880" y="355" text-anchor="end">90 ns</text>
+  </g>
+  <text x="480" y="429" class="sans" fill="#aebbc7" font-size="19" text-anchor="middle">한 점만으로는 실행 순간의 흔들림을 알 수 없습니다.</text>
+</svg>
