@@ -1,47 +1,54 @@
 # 문서 주석과 문서 테스트
 
-Rust의 공개 API에는 `///` 문서 주석을 붙일 수 있습니다. 모듈이나 crate 전체를
-설명할 때는 `//!`를 사용합니다. 문서의 Rust 코드 블록은 `cargo test --doc`가
-컴파일하고 실행하므로 사용법이 실제 코드와 달라지는 일을 줄일 수 있습니다.
+Rust의 공개 API에는 `///` 문서 주석을 붙일 수 있습니다. 모듈이나
+크레이트<sub>crate</sub> 전체를 설명할 때는 `//!`를 사용합니다.
+문서 주석 안에서 백틱 세 개(<code>```</code>)로 Rust 코드 블록을 감쌀 수 있고,
+`cargo test --doc`는 이 코드 블록을 별도로 컴파일하고 실행합니다. 따라서 문서의
+사용법이 실제 코드와 달라지는 일을 줄일 수 있습니다.
 
 ## 실행되는 사용 예제
 
-`normalize_names`의 문서에는 다음과 같은 사용 예제가 들어 있습니다.
+`normalize_names`의 문서 주석과 함수는 다음과 같습니다.
 
 ```rust
-use rust_course_tooling::normalize_names;
-
-let names = normalize_names(&[" Ferris ", " RUST "]);
-assert_eq!(names, ["ferris", "rust"]);
+{{#include ../../../src/lib.rs:22:37}}
 ```
 
-문서 테스트에서는 독자에게 중요하지 않은 준비 코드를 `#`로 시작해 문서에서 숨길
-수 있습니다. 코드는 보이지 않아도 테스트할 때 함께 컴파일됩니다.
+`///` 뒤의 문서 내용이 `#`로 시작하는 `use` 문은 생성된 문서에서 보이지
+않습니다. 문서 테스트에서는 이처럼 독자에게 중요하지 않은 준비 코드를 숨길 수
+있습니다. 코드는 보이지 않아도 테스트할 때 함께 컴파일됩니다.
 
 ## 코드 블록 속성
+
+코드 블록의 여는 표시 뒤에는 `no_run`이나 `compile_fail` 같은 속성을 적을 수
+있습니다.
 
 - 아무 속성이 없는 Rust 블록은 컴파일하고 실행합니다.
 - `no_run`은 컴파일하지만 실행하지 않습니다.
 - `compile_fail`은 컴파일이 실패해야 테스트가 통과합니다.
 - `ignore`는 문서 테스트에서 제외합니다.
 
-```rust,no_run
-std::fs::write("report.txt", "완료")?;
-# Ok::<(), std::io::Error>(())
+```rust
+/// ```no_run
+/// std::fs::write("report.txt", "완료")?;
+/// # Ok::<(), std::io::Error>(())
+/// ```
 ```
 
 파일을 만드는 예제처럼 문법과 타입은 검사하되 문서 테스트 중 실행하고 싶지 않은
 코드에는 `no_run`을 사용할 수 있습니다.
 
-```rust,compile_fail
-let message = String::from("완료");
-drop(message);
-println!("{message}");
+```rust
+/// ```compile_fail
+/// let message = String::from("완료");
+/// drop(message);
+/// println!("{message}");
+/// ```
 ```
 
-`compile_fail`은 소유권이나 타입 제약처럼 “이 사용법은 허용되지 않는다”는 계약을
-검사할 때 유용합니다. 단지 현재 우연히 컴파일되지 않는 내부 구현을 고정하는 데
-사용하지 마세요.
+`compile_fail`은 소유권이나 타입 제약 때문에 허용되지 않는 사용법을 검사할 때
+유용합니다. 공개 API에서 계속 금지해야 하는 사용법에만 적용하고, 구현을 고치면
+사라질 일시적인 컴파일 오류에는 사용하지 마세요.
 
 ## 실행하기
 
@@ -51,7 +58,7 @@ println!("{message}");
 cargo test --doc --locked
 ```
 
-feature에 따라 문서와 공개 API가 달라진다면 지원하는 구성을 각각 검사합니다.
+피처<sub>feature</sub>에 따라 문서와 공개 API가 달라진다면 지원하는 구성을 각각 검사합니다.
 
 ```bash
 cargo test --doc --no-default-features --locked

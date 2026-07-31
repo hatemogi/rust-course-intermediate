@@ -37,7 +37,7 @@ cargo test --test exercises
 
 <figure>
   <img src="../images/tooling/test-crate-boundary.svg"
-       alt="단위 테스트는 library crate 안에서 비공개 구현까지 보고, 통합 테스트는 crate 밖에서 공개 API를 호출하는 모습">
+       alt="단위 테스트는 라이브러리 크레이트(crate) 안에서 비공개 구현까지 보고, 통합 테스트는 크레이트 밖에서 공개 API를 호출하는 모습">
   <figcaption>테스트의 위치가 접근할 수 있는 코드와 지켜야 할 약속을 결정합니다.</figcaption>
 </figure>
 
@@ -47,5 +47,3 @@ cargo test --test exercises
 - 공개 API 여러 개를 조합한 사용법을 확인한다면 통합 테스트를 사용합니다.
 - 버그가 공개 API로 재현된다면 구현 세부 사항보다 공개 동작을 검사하는 편이
   리팩터링에 강합니다.
-- 두 구현의 결과만 서로 비교하면 둘 다 같은 방식으로 틀린 경우를 놓칩니다. 알 수
-  있는 입력에는 기대 결과도 함께 적습니다.

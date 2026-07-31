@@ -1,7 +1,7 @@
 ---
 theme: default
 title: 우아한 Rust 중급 개발 도구 전체 과정
-info: 우아한 Rust 중급 개발 도구 11편 통합 강의
+info: 우아한 Rust 중급 개발 도구 10편 통합 강의
 colorSchema: dark
 aspectRatio: 16/9
 canvasWidth: 1100
@@ -16,7 +16,7 @@ hideInToc: true
 
 # 개발 도구<br>전체 과정
 
-11개 챕터를 하나의 검증 흐름으로 이어서 살펴봅니다.
+10개 챕터를 하나의 검증 흐름으로 이어서 살펴봅니다.
 
 ---
 title: 전체 과정
@@ -37,7 +37,7 @@ routeAlias: toolchain
 ---
 
 ---
-src: ./01-toolchain.md#3-12
+src: ./01-toolchain.md#3-16
 level: 2
 ---
 
@@ -59,7 +59,7 @@ routeAlias: rustfmt
 ---
 
 ---
-src: ./03-rustfmt.md#2-9
+src: ./03-rustfmt.md#2-8
 level: 2
 ---
 
@@ -130,24 +130,13 @@ level: 2
 ---
 
 ---
-src: ./10-benchmark.md#1
-level: 1
-routeAlias: benchmark
----
-
----
-src: ./10-benchmark.md#2-10
-level: 2
----
-
----
-src: ./11-workflow.md#1
+src: ./10-workflow.md#1
 level: 1
 routeAlias: workflow
 ---
 
 ---
-src: ./11-workflow.md#2-14
+src: ./10-workflow.md#2-25
 level: 2
 ---
 

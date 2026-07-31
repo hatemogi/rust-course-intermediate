@@ -1,6 +1,7 @@
 # `cargo fix`와 자동 수정 검토하기
 
-컴파일러와 Clippy의 진단에는 도구가 안전하게 적용할 수 있다고 판단한 수정안이
+컴파일러와 클리피<sub>Clippy</sub>의 진단에는 도구가 안전하게 적용할 수 있다고
+판단한 수정안이
 포함되기도 합니다. `cargo fix`는 rustc가 제안한 수정안을 소스 파일에 적용합니다.
 
 ```bash
@@ -8,12 +9,13 @@ git status --short
 cargo fix --locked
 ```
 
-`cargo fix`는 내부에서 `cargo check`를 실행하며, 기본적으로 모든 Cargo 타깃을
+`cargo fix`는 내부에서 `cargo check`를 실행하며, 기본적으로 모든 카고<sub>Cargo</sub>
+타깃을
 대상으로 삼습니다. 실행 결과는 소스 파일을 직접 바꾸므로 먼저 커밋하거나 작업
-트리를 깨끗하게 만들어 두는 편이 좋습니다. 변경 중인 파일이 있으면 Cargo가 실행을
+트리를 깨끗하게 만들어 두는 편이 좋습니다. 변경 중인 파일이 있으면 카고가 실행을
 거부하므로 무심코 기존 작업과 자동 수정을 섞는 일을 막을 수 있습니다.
 
-Clippy가 제안한 수정안을 적용하려면 다음 명령을 사용합니다.
+클리피가 제안한 수정안을 적용하려면 다음 명령을 사용합니다.
 
 ```bash
 cargo clippy --fix --locked
@@ -25,8 +27,8 @@ cargo clippy --fix --locked
 
 ## 검사되지 않는 코드 확인하기
 
-Cargo는 현재 활성화된 feature와 컴파일 대상 플랫폼에 포함된 코드만 분석합니다.
-다른 feature까지 고치려면 검사 범위를 명시합니다.
+카고는 현재 활성화된 피처<sub>feature</sub>와 컴파일 대상 플랫폼에 포함된 코드만
+분석합니다. 다른 피처까지 고치려면 검사 범위를 명시합니다.
 
 ```bash
 cargo fix --all-features --locked
@@ -42,20 +44,23 @@ cargo fix --target x86_64-pc-windows-gnu
 모든 대상 플랫폼의 코드를 한 컴퓨터에서 곧바로 고칠 수 있는 것은 아닙니다. 필요한
 표준 라이브러리와 링커가 준비되어 있는지도 확인해야 합니다.
 
+> **참고: 카고 피처란?**
+>
+> 카고 피처는 패키지의 기능을 선택해서 켜는 이름표입니다. 피처에 따라 특정 코드나
+> 의존성을 컴파일에 포함할 수 있습니다. 따라서 현재 켜지지 않은 피처에 속한 코드는
+> `cargo fix`의 검사 대상에서도 빠집니다. 피처를 정의하고 조합하는 방법은
+> [카고 피처와 검사 조합](./13-features.md)에서 자세히 살펴봅니다.
+
 ## 자동 수정 뒤에 할 일
 
 자동 수정은 다음 검토 과정을 줄여 주지 않습니다.
 
 1. `git diff`로 어떤 파일과 줄이 바뀌었는지 읽습니다.
 2. 공개 API와 오류 처리 방식이 달라지지 않았는지 확인합니다.
-3. `cargo fmt --check`와 Clippy를 다시 실행합니다.
+3. `cargo fmt --check`와 클리피를 다시 실행합니다.
 4. 관련 테스트를 실행합니다.
 5. 의도와 다른 수정은 되돌리거나 직접 고칩니다.
 
-edition을 올릴 때는 `cargo fix --edition`으로 다음 edition에 맞는 수정안을 적용할
-수 있습니다. 이 명령은 `Cargo.toml`의 `edition` 값까지 바꾸지는 않습니다. 자동
-수정과 `Cargo.toml` 변경, 전체 테스트를 각각 확인해야 합니다.
-
-자세한 동작과 제한은 [Cargo의 `cargo fix` 문서](https://doc.rust-lang.org/cargo/commands/cargo-fix.html)와
-[Clippy 사용법](https://doc.rust-lang.org/stable/clippy/usage.html)에서 확인할 수
+자세한 동작과 제한은 [카고의 `cargo fix` 문서](https://doc.rust-lang.org/cargo/commands/cargo-fix.html)와
+[클리피 사용법](https://doc.rust-lang.org/stable/clippy/usage.html)에서 확인할 수
 있습니다.

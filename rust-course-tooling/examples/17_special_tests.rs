@@ -26,6 +26,15 @@ mod tests {
     }
 
     #[test]
+    fn rejects_a_port_with_letters() {
+        let error = "http"
+            .parse::<u16>()
+            .expect_err("숫자가 아닌 포트는 거부해야 합니다");
+
+        assert_eq!(error.kind(), &std::num::IntErrorKind::InvalidDigit);
+    }
+
+    #[test]
     #[should_panic(expected = "index out of bounds")]
     fn panics_when_the_slice_is_empty() {
         first(&[]);

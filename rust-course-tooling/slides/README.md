@@ -1,6 +1,6 @@
 # 우아한 Rust 중급: 개발 도구 슬라이드
 
-이 디렉터리에는 `VIDEO_COURSE.md`의 11편 구성에 맞춘 Slidev 강의 자료가 들어
+이 디렉터리에는 `VIDEO_COURSE.md`의 10편 구성에 맞춘 Slidev 강의 자료가 들어
 있습니다. 각 영상은 독립된 덱이므로 필요한 편만 실행하거나 PDF로 내보낼 수
 있습니다.
 
@@ -12,7 +12,7 @@ make install
 
 ## 발표 화면 열기
 
-기본값은 11편을 모두 묶은 통합 덱입니다.
+기본값은 10편을 모두 묶은 통합 덱입니다.
 
 ```bash
 make serve
@@ -77,8 +77,7 @@ PDF 내보내기에는 Slidev가 사용하는 브라우저가 추가로 필요�
 | 7 | `episodes/07-features-docs.md` |
 | 8 | `episodes/08-tests.md` |
 | 9 | `episodes/09-error-doc-tests.md` |
-| 10 | `episodes/10-benchmark.md` |
-| 11 | `episodes/11-workflow.md` |
+| 10 | `episodes/10-workflow.md` |
 
 슬라이드의 Rust 코드는 가능한 한 상위 디렉터리의 `examples`, `src`, `tests` 파일을
 직접 가져옵니다. 예제 파일을 고치면 슬라이드에도 같은 코드가 나타납니다.

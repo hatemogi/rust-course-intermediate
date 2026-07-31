@@ -27,7 +27,7 @@
 
   <circle cx="68" cy="269" r="15" fill="#202c39"/>
   <text x="68" y="269" class="sans number">3</text>
-  <text x="96" y="277" class="mono code" fill="#f47b32">  |                         ^^^^^^^</text>
+  <text x="96" y="277" class="mono code" aria-label="message 아래의 오류 표시"><tspan visibility="hidden">4 | println!("다시 출력: {</tspan><tspan fill="#f47b32">^^^^^^^</tspan></text>
 
   <circle cx="68" cy="326" r="15" fill="#202c39"/>
   <text x="68" y="326" class="sans number">4</text>
@@ -44,9 +44,9 @@
     <text x="754" y="149" class="body">파일과 줄·열</text>
     <text x="662" y="219" class="label">표시</text>
     <text x="754" y="219" class="body">문제가 된 값</text>
-    <text x="662" y="289" class="label">note</text>
+    <text x="662" y="289" class="label">비고</text>
     <text x="754" y="289" class="body">앞서 일어난 이동</text>
-    <text x="662" y="359" class="label">help</text>
+    <text x="662" y="359" class="label">도움말</text>
     <text x="754" y="359" class="body">수정 제안</text>
     <text x="754" y="390" class="muted">의도와 맞는지 검토</text>
   </g>

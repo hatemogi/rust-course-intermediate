@@ -1,6 +1,8 @@
 use std::collections::BTreeMap;
 
-use rust_course_tooling::{binary_contains, count_words, linear_contains, normalize_names};
+use rust_course_tooling::{
+    binary_contains, count_normalized_names, count_words, linear_contains, normalize_names,
+};
 
 #[test]
 fn trims_and_lowercases_names() {
@@ -20,6 +22,23 @@ fn preserves_the_order_of_names() {
 #[test]
 fn returns_an_empty_list_for_an_empty_input() {
     assert_eq!(normalize_names(&[]), Vec::<String>::new());
+}
+
+#[test]
+// 종합 실습을 구현한 뒤 `#[ignore]`를 제거하세요.
+#[ignore]
+fn counts_normalized_names() {
+    assert_eq!(
+        count_normalized_names(&[" Ferris ", "ferris", "", " RUST "]),
+        BTreeMap::from([("ferris".to_owned(), 2), ("rust".to_owned(), 1),])
+    );
+}
+
+#[test]
+// 종합 실습을 구현한 뒤 `#[ignore]`를 제거하세요.
+#[ignore]
+fn returns_no_name_counts_for_an_empty_input() {
+    assert!(count_normalized_names(&[]).is_empty());
 }
 
 #[test]

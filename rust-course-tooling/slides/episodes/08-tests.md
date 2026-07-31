@@ -23,7 +23,7 @@ level: 2
 
 # 컴파일 성공은 동작을 확인하지 않습니다
 
-`cargo check`는 타입, 소유권과 문법 규칙을 만족하는지 확인합니다. 계산 결과와 오류
+`cargo check`는 타입·소유권·문법 규칙을 만족하는지 확인합니다. 계산 결과와 오류
 처리가 요구 사항에 맞는지는 테스트가 별도로 확인해야 합니다.
 
 <div class="command">cargo test</div>
@@ -79,9 +79,9 @@ level: 2
 # 필요한 테스트만 골라 빠르게 반복합니다
 
 ```bash
-cargo test --example 05_testing
-cargo test divides
-cargo test returns_none
+cargo test --example 15_testing
+cargo test --example 15_testing divides
+cargo test --example 15_testing returns_none
 cargo test -- --no-capture
 ```
 
@@ -92,7 +92,7 @@ cargo test -- --no-capture
 level: 2
 ---
 
-# 단위 테스트는 같은 crate의 내부 규칙을 봅니다
+# 단위 테스트는 같은 크레이트의 내부 규칙을 봅니다
 
 ```rust
 #[cfg(test)]
@@ -115,7 +115,8 @@ level: 2
 
 # 통합 테스트는 외부 사용자의 위치에서 봅니다
 
-`tests/*.rs`는 각각 별도의 crate로 컴파일되므로 공개 API만 사용할 수 있습니다.
+`tests/*.rs`는 각각 별도의 크레이트<sub>crate</sub>로 컴파일되므로 공개 API만
+사용할 수 있습니다.
 
 ```rust {1|3-8}{lines:true}
 use rust_course_tooling::normalize_names;
@@ -147,14 +148,14 @@ level: 2
   </div>
 
   <div class="crate-shell">
-    <div class="crate-label">library crate</div>
+    <div class="crate-label">라이브러리 크레이트</div>
     <div class="crate-code">
       <div class="private-item"><code>fn normalized_name</code><span>비공개 구현</span></div>
       <div class="public-item"><code>pub fn normalize_names</code><span>공개 동작</span></div>
     </div>
     <div class="unit-zone">
       <strong>단위 테스트</strong>
-      <span>같은 crate 안에서 내부 규칙까지 검사</span>
+      <span>같은 크레이트 안에서 내부 규칙까지 검사</span>
     </div>
   </div>
 </div>
@@ -185,7 +186,7 @@ level: 2
 <div class="tool-flow">
   <div><strong>작성 중</strong>이름 필터로 관련 테스트만 실행합니다.</div>
   <div><strong>변경 뒤</strong>해당 타깃과 통합 테스트를 실행합니다.</div>
-  <div><strong>완료 전</strong>지원 feature의 전체 테스트를 실행합니다.</div>
+  <div><strong>완료 전</strong>지원하는 피처<sub>feature</sub>의 전체 테스트를 실행합니다.</div>
 </div>
 
 ---
@@ -196,4 +197,4 @@ class: section
 
 # 테스트 위치는<br>무엇을 약속하는지 보여 줍니다
 
-다음 편에서는 오류, panic, 제외한 테스트와 문서 테스트를 다룹니다.
+다음 편에서는 오류, panic, 제외한 테스트, 문서 테스트를 다룹니다.

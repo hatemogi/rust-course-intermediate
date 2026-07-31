@@ -24,7 +24,7 @@ fn normalized_name(name: &str) -> Option<String> {
 /// # Examples
 ///
 /// ```
-/// use rust_course_tooling::normalize_names;
+/// # use rust_course_tooling::normalize_names;
 ///
 /// let names = normalize_names(&[" Ferris ", " RUST "]);
 /// assert_eq!(names, ["ferris", "rust"]);
@@ -34,6 +34,12 @@ pub fn normalize_names(names: &[&str]) -> Vec<String> {
         .iter()
         .filter_map(|name| normalized_name(name))
         .collect()
+}
+
+/// 종합 실습에서 구현할 이름별 횟수 계산 함수입니다.
+pub fn count_normalized_names(names: &[&str]) -> BTreeMap<String, usize> {
+    // 아래 todo!()를 제거하고 실제 구현을 작성하세요.
+    todo!("주어진 이름별 횟수를 세는 함수를 구현하세요: {names:?}")
 }
 
 /// 공백으로 나눈 단어의 등장 횟수를 대소문자를 구분해 단어순으로 반환합니다.

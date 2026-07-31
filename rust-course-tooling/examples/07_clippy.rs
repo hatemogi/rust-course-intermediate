@@ -1,5 +1,8 @@
 fn contains_even(numbers: &[i32]) -> bool {
-    numbers.iter().any(|number| number % 2 == 0)
+    numbers
+        .iter()
+        .map(|number| number % 2 == 0)
+        .any(|is_even| is_even)
 }
 
 fn main() {

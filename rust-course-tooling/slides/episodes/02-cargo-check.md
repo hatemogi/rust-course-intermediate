@@ -15,7 +15,7 @@ class: cover
 
 # `cargo check`와<br>컴파일 오류 읽기
 
-검사할 Cargo 타깃을 정하고 첫 번째 오류부터 원인을 찾습니다.
+검사할 카고<sub>Cargo</sub> 타깃을 정하고 첫 번째 오류부터 원인을 찾습니다.
 
 ---
 level: 2
@@ -45,10 +45,9 @@ level: 2
 <div class="tool-flow">
   <div><strong>라이브러리·실행 파일</strong><code>src/lib.rs</code><br><code>src/main.rs</code></div>
   <div><strong>학습·검증 코드</strong><code>examples/*.rs</code><br><code>tests/*.rs</code></div>
-  <div><strong>성능 측정</strong><code>benches/*.rs</code></div>
 </div>
 
-<div class="takeaway">기본 <code>cargo check</code>가 프로젝트의 모든 코드를 검사한다고 가정하지 않습니다.</div>
+<div class="takeaway">기본 <code>cargo check</code>는 라이브러리와 실행 파일 타깃만 검사합니다.</div>
 
 ---
 level: 2
@@ -60,7 +59,8 @@ level: 2
 cargo check --all-targets --locked
 ```
 
-- `--all-targets`: 라이브러리, 실행 파일, 예제, 테스트와 벤치마크를 검사합니다.
+- `--all-targets`: 라이브러리, 실행 파일, 예제, 테스트를 검사합니다.
+- `Cargo.lock`: 카고가 선택한 직접·간접 의존성의 정확한 버전과 출처를 기록합니다.
 - `--locked`: 다른 의존성 선택이 필요하면 `Cargo.lock`을 바꾸지 않고 실패합니다.
 
 필요한 범위만 좁힐 수도 있습니다.
@@ -69,7 +69,6 @@ cargo check --all-targets --locked
 cargo check --lib
 cargo check --examples
 cargo check --tests
-cargo check --benches
 ```
 
 ---
@@ -84,7 +83,10 @@ level: 2
     <div class="diag-line"><span>2</span><code> --&gt; moved_value.rs:4:23</code></div>
     <div class="diag-source"><code>3 | print_message(message);</code><em>value moved here</em></div>
     <div class="diag-source"><code>4 | println!("다시 출력: {message}");</code></div>
-    <div class="diag-line diag-caret"><span>3</span><code>  |                         ^^^^^^^</code></div>
+    <div class="diag-line diag-caret">
+      <span>3</span>
+      <code aria-label="message 아래의 오류 표시"><i aria-hidden="true">4 | println!("다시 출력: {</i>^^^^^^^</code>
+    </div>
     <div class="diag-line diag-note"><span>4</span><code>note: parameter takes ownership of the value</code></div>
     <div class="diag-line diag-help"><span>5</span><code>help: consider borrowing or cloning the value</code></div>
   </div>
@@ -93,8 +95,8 @@ level: 2
     <li><strong>오류</strong><span>코드와 한 줄 설명</span></li>
     <li><strong>위치</strong><span>파일과 줄·열</span></li>
     <li><strong>표시</strong><span>문제가 된 값</span></li>
-    <li><strong>note</strong><span>앞서 일어난 이동</span></li>
-    <li><strong>help</strong><span>의도와 맞는지 검토할 제안</span></li>
+    <li><strong>비고</strong><span>앞서 일어난 이동</span></li>
+    <li><strong>도움말</strong><span>의도와 맞는지 검토할 제안</span></li>
   </ol>
 </div>
 
@@ -108,11 +110,15 @@ level: 2
 
 <<< ../../examples/compile_fail/moved_value.rs rust {2|4|6}{lines:true}
 
+<div class="command text-sm">rustc examples/compile_fail/moved_value.rs</div>
+
 <div v-click class="takeaway"><code>print_message</code>가 <code>String</code>을 값으로 받으면서 소유권이 이동합니다.</div>
 
 <!--
 코드를 먼저 보여 주고 어느 줄에서 이동하는지 질문합니다.
-그 다음 실제 rustc 오류로 전환해 note와 help를 함께 읽습니다.
+rust-course-tooling 디렉터리에서 명령을 실행합니다. 이 예제는 컴파일 실패가
+목적이므로 실행 파일이 만들어지지 않고 E0382가 나오면 정상입니다.
+그 다음 실제 rustc 오류로 전환해 비고와 도움말을 함께 읽습니다.
 -->
 
 ---
@@ -172,5 +178,6 @@ level: 2
 
 <!--
 답은 아직 아니라고 정리합니다.
-다음 편의 rustfmt와 이후의 Clippy, 테스트가 서로 다른 질문에 답한다는 흐름으로 연결합니다.
+다음 편의 rustfmt와 이후의 클리피<sub>Clippy</sub>, 테스트가 서로 다른 질문에
+답한다는 흐름으로 연결합니다.
 -->

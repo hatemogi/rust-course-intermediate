@@ -1,4 +1,4 @@
-# `cargo check`와 Cargo 타깃
+# `cargo check`와 카고 타깃
 
 `cargo check`는 Rust 코드를 컴파일할 수 있는지 검사하지만 최종 실행 파일은 만들지
 않습니다. 코드 작성 중에 타입 오류와 소유권 오류를 빠르게 확인할 때 사용합니다.
@@ -16,19 +16,18 @@ cargo check
 | `cargo build` | 실행하거나 배포할 파일 만들기 | 만듦 |
 | `cargo run` | 실행 파일을 만든 뒤 바로 실행하기 | 만들고 실행함 |
 
-## Cargo 타깃
+## 카고 타깃
 
-한 패키지에는 여러 종류의 컴파일 대상이 들어갈 수 있습니다. Cargo에서는 이를
-타깃이라고 부릅니다.
+한 패키지에는 여러 종류의 컴파일 대상이 들어갈 수 있습니다.
+카고<sub>Cargo</sub>에서는 이를 타깃이라고 부릅니다.
 
 - `src/lib.rs`: 라이브러리 타깃
 - `src/main.rs`, `src/bin/*.rs`: 실행 파일 타깃
 - `examples/*.rs`: 예제 타깃
 - `tests/*.rs`: 통합 테스트 타깃
-- `benches/*.rs`: 벤치마크 타깃
 
-기본 `cargo check`가 모든 타깃을 검사한다고 가정하면 안 됩니다. 강의 저장소에서는
-예제와 테스트도 항상 컴파일되는지 확인하기 위해 다음 명령을 사용합니다.
+기본 `cargo check`는 라이브러리와 실행 파일 타깃만 검사합니다. 강의 저장소에서는
+예제와 통합 테스트도 항상 컴파일되는지 확인하기 위해 다음 명령을 사용합니다.
 
 ```bash
 cargo check --all-targets --locked
@@ -40,20 +39,18 @@ cargo check --all-targets --locked
 cargo check --lib
 cargo check --examples
 cargo check --tests
-cargo check --benches
 ```
 
-여러 패키지를 묶은 Cargo workspace에서는 `--workspace`로 모든 구성원을 검사합니다.
+`--locked`는 기존 `Cargo.lock`을 변경해야 하면 명령을 실패시킵니다. 잠금 파일을
+모르는 사이에 바꾸지 않고 같은 의존성 버전으로 검증할 때 사용합니다.
 
-```bash
-cargo check --workspace --all-targets --locked
-```
-
-`--locked`는 `Cargo.lock`과 다른 의존성 해석이 필요하면 명령을 실패시킵니다. 잠금
-파일을 모르는 사이에 바꾸지 않고 같은 의존성으로 검증할 때 사용합니다.
+> **참고: `Cargo.lock`**
+>
+> `Cargo.lock`은 카고가 실제로 선택한 직접·간접 의존성의 정확한 버전과 출처를
+> 기록하는 파일입니다. 카고가 이 파일을 만들고 업데이트하므로 직접 편집하지 않습니다.
 
 ## 판단하기
 
 - 예제 코드를 교재에 넣었지만 `cargo check --all-targets`를 실행하지 않았다면 어떤
-  문제가 남을 수 있을까요?
+  문제가 있을 수 있을까요?
 - 컴파일 검사에 통과한 코드가 테스트까지 통과한다고 말할 수 있나요?

@@ -39,7 +39,7 @@ level: 2
 
 <div class="command">cargo fmt</div>
 
-<<< ../../examples/01_formatting.rs rust {lines:true}
+<<< ../../examples/05_formatting.rs rust {lines:true}
 
 명령을 실행하기 전후로 `git diff`를 읽으면 어떤 파일이 어떻게 정리됐는지 확인할
 수 있습니다.
@@ -57,19 +57,6 @@ level: 2
 - CI가 실행한 뒤 저장소 내용이 몰래 달라지는 일을 막습니다.
 
 <div class="takeaway">로컬에서는 <code>cargo fmt</code>, 자동 검사에서는 <code>cargo fmt --check</code>를 사용합니다.</div>
-
----
-level: 2
----
-
-# workspace 전체를 검사할 수도 있습니다
-
-```bash
-cargo fmt --all --check
-```
-
-여러 패키지를 묶은 workspace에서는 어느 패키지를 열어 작업했는지와 관계없이 전체
-Rust 소스의 형식을 확인할 수 있습니다.
 
 ---
 level: 2
@@ -117,4 +104,4 @@ class: section
 
 # 형식이 맞는 코드가<br>곧 올바른 코드는 아닙니다
 
-다음 편에서는 Clippy의 경고를 읽고 적용 여부를 판단합니다.
+다음 편에서는 클리피<sub>Clippy</sub>의 경고를 읽고 적용 여부를 판단합니다.

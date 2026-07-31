@@ -47,6 +47,8 @@ fn parses_a_port() -> Result<(), Box<dyn std::error::Error>> {
 준비 과정의 오류를 `?`로 전달하기 편리합니다. 그러나 **오류 발생 자체가 요구
 사항**이라면 바로 끝내지 말고 오류의 종류와 내용을 명시적으로 검사합니다.
 
+<div class="takeaway compact"><code>Box&lt;dyn std::error::Error&gt;</code>는 여러 구체적인 오류를 하나의 반환 타입으로 다룰 때 사용합니다.</div>
+
 ---
 level: 2
 ---
@@ -151,6 +153,7 @@ level: 2
 # 문서 테스트만 따로 실행할 수 있습니다
 
 ```bash
+cargo test --doc --locked
 cargo test --doc --no-default-features --locked
 cargo test --doc --all-features --locked
 ```
@@ -183,4 +186,4 @@ class: section
 
 # 실패 경로도 API이고<br>문서의 예제도 코드입니다
 
-다음 편에서는 올바른 두 구현을 공정하게 측정하는 방법을 살펴봅니다.
+다음 편에서는 환경, 검사, 테스트, 문서를 하나의 검증 흐름으로 연결합니다.

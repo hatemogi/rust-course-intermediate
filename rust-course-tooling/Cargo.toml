@@ -10,6 +10,6 @@ rust-version = "1.85"
 default = []
 binary-search = []
 
-[[bench]]
-name = "search"
-harness = false
+[[example]]
+name = "17_special_tests"
+test = true
