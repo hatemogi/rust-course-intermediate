@@ -70,7 +70,7 @@ routeAlias: clippy
 ---
 
 ---
-src: ./04-clippy.md#2-11
+src: ./04-clippy.md#2-10
 level: 2
 ---
 
@@ -81,7 +81,7 @@ routeAlias: editor-fix
 ---
 
 ---
-src: ./05-editor-fix.md#2-11
+src: ./05-editor-fix.md#2-10
 level: 2
 ---
 

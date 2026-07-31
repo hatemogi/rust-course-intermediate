@@ -153,21 +153,6 @@ level: 2
 
 ---
 level: 2
----
-
-# `cargo fix --edition`도 일부만 바꿉니다
-
-다음 edition에 맞는 소스 수정안을 적용하지만 `Cargo.toml`의 `edition` 값까지
-바꾸지는 않습니다.
-
-<div class="tool-flow">
-  <div><strong>소스 수정</strong><code>cargo fix --edition</code></div>
-  <div><strong>선언 변경</strong><code>Cargo.toml</code> 검토</div>
-  <div><strong>전체 확인</strong>모든 피처와 테스트 실행</div>
-</div>
-
----
-level: 2
 layout: center
 class: section
 ---
