@@ -1,8 +1,11 @@
 # 우아한 Rust 중급: 개발 도구
 
+이 강의에서는 Rust의 표준 개발 도구를 정확하고 능숙하게 사용하는 방법을
+배웁니다.
+
 코드를 작성한 뒤에는 형식을 맞추고, 의심스러운 부분을 찾고, 동작을 테스트해야
 합니다. 이 교재에서는 Rust 프로젝트에서 자주 사용하는
-`rustup`, `cargo check`, `rustfmt`, 클리피<sub>Clippy</sub>, 의존성 관리, `cargo doc`,
+`rustup`, `cargo check`, `rustfmt`, `cargo clippy`, `cargo update`, `cargo doc`,
 `cargo test`를 하나의 개발·검증 흐름 속에서 익힙니다.
 
 도구의 출력을 그대로 따라 하는 수준을 넘어서, 각 도구가 무엇을 확인하는지

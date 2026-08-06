@@ -1,7 +1,7 @@
 MSRV ?= 1.85
 CLIPPY_FLAGS = -D warnings -A clippy::map-all-any-identity
 
-.PHONY: check msrv mdbook slides
+.PHONY: check msrv mdbook slides mdslide
 
 check:
 	cargo fmt --check
@@ -19,6 +19,7 @@ check:
 	cargo doc --no-deps --no-default-features --locked
 	cargo doc --no-deps --all-features --locked
 	$(MAKE) -C book compile
+	$(MAKE) -C ../mdslide check COURSE=$(CURDIR)
 
 msrv:
 	cargo +$(MSRV) check --all-targets --no-default-features --locked
@@ -33,3 +34,6 @@ mdbook:
 
 slides:
 	$(MAKE) -C slides serve
+
+mdslide:
+	$(MAKE) -C ../mdslide serve COURSE=$(CURDIR)

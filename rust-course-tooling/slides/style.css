@@ -60,6 +60,15 @@
   margin: 10px 0;
 }
 
+.slidev-layout ul > li {
+  list-style-type: disc;
+}
+
+.slidev-layout li::marker {
+  color: var(--tooling-orange);
+  font-weight: 700;
+}
+
 .slidev-layout strong {
   color: var(--tooling-yellow);
 }

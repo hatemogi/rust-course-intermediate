@@ -15,6 +15,7 @@ export:
 	npm run export -- episodes/$(EPISODE).md --output $(EPISODE).pdf
 
 check:
+	node check-notes.mjs
 	@set -e; \
 	for deck in episodes/*.md; do \
 		name=$$(basename "$$deck" .md); \

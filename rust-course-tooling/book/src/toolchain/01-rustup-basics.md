@@ -1,6 +1,6 @@
-# `rustup`, `rustc`와 카고의 역할
+# `rustup`·`rustc`·`cargo`의 역할
 
-Rust 개발 환경에는 `rustup`·`rustc`·카고<sub>Cargo</sub>처럼 이름이 비슷하지만
+Rust 개발 환경에는 `rustup`·`rustc`·`cargo`처럼 이름이 비슷하지만
 역할이 다른 도구가 함께 설치됩니다.
 
 - `rustup`은 Rust 툴체인<sub>toolchain</sub>과 컴포넌트<sub>component</sub>를

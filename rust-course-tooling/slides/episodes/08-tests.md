@@ -17,11 +17,17 @@ class: cover
 
 구현 세부와 공개 동작을 서로 알맞은 위치에서 검사합니다.
 
+<!--
+교재 대응: book/src/testing/16-unit-integration.md > 단위 테스트와 통합 테스트
+
+Rust에서는 테스트의 위치에 따라 접근할 수 있는 코드와 컴파일 방식이 달라집니다.
+-->
+
 ---
 level: 2
 ---
 
-# 컴파일 성공은 동작을 확인하지 않습니다
+# `cargo test`와 기본 assertion
 
 `cargo check`는 타입·소유권·문법 규칙을 만족하는지 확인합니다. 계산 결과와 오류
 처리가 요구 사항에 맞는지는 테스트가 별도로 확인해야 합니다.
@@ -30,11 +36,19 @@ level: 2
 
 `#[test]`가 붙은 함수를 찾아 컴파일하고 실행합니다.
 
+<!--
+교재 대응: book/src/testing/15-cargo-test.md > cargo test와 기본 assertion
+
+cargo test는 테스트에 필요한 코드를 컴파일하고, 그중 #[test]가 붙은 함수를 각각 하나의 테스트로 실행합니다. 테스트 함수 안에서는 assertion
+macro로 실제 결과와 기대한 결과를 비교합니다. • assert!(condition)은 조건이 true인지 확인합니다. • assert_eq!(left,
+right)는 두 값이 같은지 확인합니다. • assert_ne!(left, right)는 두 값이 다른지 확인합니다.
+-->
+
 ---
 level: 2
 ---
 
-# assertion은 실제 결과와 기대를 비교합니다
+# `cargo test`와 기본 assertion
 
 - `assert!(condition)`: 조건이 `true`인지 확인합니다.
 - `assert_eq!(left, right)`: 두 값이 같은지 확인합니다.
@@ -53,11 +67,19 @@ fn returns_none_when_divisor_is_zero() {
 }
 ```
 
+<!--
+교재 대응: book/src/testing/15-cargo-test.md > cargo test와 기본 assertion
+
+cargo test는 테스트에 필요한 코드를 컴파일하고, 그중 #[test]가 붙은 함수를 각각 하나의 테스트로 실행합니다. 테스트 함수 안에서는 assertion
+macro로 실제 결과와 기대한 결과를 비교합니다. • assert!(condition)은 조건이 true인지 확인합니다. • assert_eq!(left,
+right)는 두 값이 같은지 확인합니다. • assert_ne!(left, right)는 두 값이 다른지 확인합니다.
+-->
+
 ---
 level: 2
 ---
 
-# 테스트 이름에는 확인하는 동작을 적습니다
+# 테스트 이름 짓기
 
 <div class="grid grid-cols-2 gap-10 mt-12">
   <div>
@@ -72,11 +94,18 @@ level: 2
   </div>
 </div>
 
+<!--
+교재 대응: book/src/testing/15-cargo-test.md > 테스트 이름 짓기
+
+테스트 이름에는 구현 방법보다 확인하려는 동작을 적으세요. test_checked_divide보다 returns_none_when_divisor_is_zero가 실패
+원인을 더 잘 알려 줍니다.
+-->
+
 ---
 level: 2
 ---
 
-# 필요한 테스트만 골라 빠르게 반복합니다
+# 테스트 프로그램에 옵션 전달하기
 
 ```bash
 cargo test --example 15_testing
@@ -88,11 +117,19 @@ cargo test -- --no-capture
 `--` 뒤에는 테스트 프로그램이 받을 옵션을 적습니다. `--no-capture`는 테스트가
 출력한 내용을 숨기지 않습니다.
 
+<!--
+교재 대응: book/src/testing/15-cargo-test.md > 테스트 골라서 실행하기; book/src/testing/15-cargo-test.md > 테스트 프로그램에 옵션 전달하기
+
+cargo test에 테스트 이름을 문자열로 전달하면, 선택한 테스트 대상에서 이름에 그 문자열이 들어간 테스트만 실행합니다. 예를 들어 divides와
+returns_none으로 필요한 테스트만 골라 실행할 수 있습니다. 테스트 프로그램에 옵션을 전달할 때는 --로 카고(Cargo) 옵션과 구분합니다. 테스트가
+통과했을 때도 표준 출력(stdout)과 표준 오류(stderr)에 내보낸 내용을 숨기지 않으려면 --no-capture를 사용합니다.
+-->
+
 ---
 level: 2
 ---
 
-# 단위 테스트는 같은 크레이트의 내부 규칙을 봅니다
+# 단위 테스트
 
 ```rust
 #[cfg(test)]
@@ -109,11 +146,20 @@ mod tests {
 - `cfg(test)` 모듈은 테스트할 때만 컴파일됩니다.
 - 자식 모듈이므로 `super`를 통해 비공개 함수도 검사할 수 있습니다.
 
+<!--
+교재 대응: book/src/testing/16-unit-integration.md > 단위 테스트
+
+단위 테스트는 보통 검사할 코드와 같은 파일의 #[cfg(test)] mod tests 안에 둡니다. cfg(test)가 붙은 모듈은 테스트할 때만 컴파일됩니다. 자식
+모듈이므로 super를 통해 비공개 함수도 검사할 수 있습니다. 이 강의의 src/lib.rs에는 이름 하나를 정돈하는 비공개 함수를 검사하는 단위 테스트가 있습니다.
+단위 테스트는 작은 계산이나 공개 API를 구성하는 내부 규칙을 빠르게 확인하는 데 알맞습니다. 모든 비공개 함수를 각각 검사해야 한다는 뜻은 아닙니다. 공개 API를
+사용해 충분히 확인되는 구현 세부 사항까지 테스트하면 리팩터링할 때 테스트가 불필요하게 깨질 수 있습니다.
+-->
+
 ---
 level: 2
 ---
 
-# 통합 테스트는 외부 사용자의 위치에서 봅니다
+# 통합 테스트
 
 `tests/*.rs`는 각각 별도의 크레이트<sub>crate</sub>로 컴파일되므로 공개 API만
 사용할 수 있습니다.
@@ -129,11 +175,19 @@ fn trims_and_lowercases_names() {
 
 <div class="command">cargo test --test exercises</div>
 
+<!--
+교재 대응: book/src/testing/16-unit-integration.md > 통합 테스트; book/src/testing/16-unit-integration.md > 어디에 둘지 결정하기
+
+프로젝트 루트의 tests 디렉터리에 둔 Rust 파일은 각각 별도의 crate로 컴파일됩니다. 따라서 외부 사용자가 라이브러리를 쓰는 것처럼 공개 API만 사용할 수
+있습니다. 다음 명령은 이름이 exercises인 통합 테스트 타깃만 실행합니다. 작은 내부 규칙을 직접 확인해야 한다면 같은 파일의 단위 테스트를 사용합니다. 공개 API
+여러 개를 조합한 사용법을 확인한다면 통합 테스트를 사용합니다. 버그가 공개 API로 재현된다면 구현 세부 사항보다 공개 동작을 검사하는 편이 리팩터링에 강합니다.
+-->
+
 ---
 level: 2
 ---
 
-# 위치는 테스트가 지켜야 할 약속으로 정합니다
+# 단위 테스트와 통합 테스트
 
 <div class="crate-boundary-visual">
   <div class="integration-zone">
@@ -162,11 +216,17 @@ level: 2
 
 <div class="takeaway">구현 세부를 지나치게 고정하면 안전한 리팩터링에도 테스트가 깨집니다.</div>
 
+<!--
+교재 대응: book/src/testing/16-unit-integration.md > 단위 테스트와 통합 테스트
+
+Rust에서는 테스트의 위치에 따라 접근할 수 있는 코드와 컴파일 방식이 달라집니다.
+-->
+
 ---
 level: 2
 ---
 
-# 독립된 요구 사항은 테스트에서도 따로 드러냅니다
+# 테스트 이름 짓기
 
 `normalize_names`라면 다음 입력을 각각 확인할 수 있습니다.
 
@@ -177,11 +237,18 @@ level: 2
 
 <div class="question">테스트가 실패했을 때 어느 요구 사항이 깨졌는지 이름만 보고 알 수 있나요?</div>
 
+<!--
+교재 대응: book/src/testing/15-cargo-test.md > 테스트 이름 짓기
+
+테스트 이름에는 구현 방법보다 확인하려는 동작을 적으세요. test_checked_divide보다 returns_none_when_divisor_is_zero가 실패
+원인을 더 잘 알려 줍니다.
+-->
+
 ---
 level: 2
 ---
 
-# 테스트는 빠른 반복과 전체 확인을 함께 씁니다
+# 통합 테스트
 
 <div class="tool-flow">
   <div><strong>작성 중</strong>이름 필터로 관련 테스트만 실행합니다.</div>
@@ -189,12 +256,9 @@ level: 2
   <div><strong>완료 전</strong>지원하는 피처<sub>feature</sub>의 전체 테스트를 실행합니다.</div>
 </div>
 
----
-level: 2
-layout: center
-class: section
----
+<!--
+교재 대응: book/src/testing/16-unit-integration.md > 통합 테스트
 
-# 테스트 위치는<br>무엇을 약속하는지 보여 줍니다
-
-다음 편에서는 오류, panic, 제외한 테스트, 문서 테스트를 다룹니다.
+프로젝트 루트의 tests 디렉터리에 둔 Rust 파일은 각각 별도의 crate로 컴파일됩니다. 따라서 외부 사용자가 라이브러리를 쓰는 것처럼 공개 API만 사용할 수
+있습니다. 다음 명령은 이름이 exercises인 통합 테스트 타깃만 실행합니다.
+-->

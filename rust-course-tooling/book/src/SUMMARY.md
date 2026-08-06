@@ -4,7 +4,7 @@
 
 # Rust 툴체인 준비
 
-- [`rustup`, `rustc`와 카고의 역할](./toolchain/01-rustup-basics.md)
+- [`rustup`·`rustc`·`cargo`의 역할](./toolchain/01-rustup-basics.md)
 - [프로젝트에서 Rust 버전을 선택하고 확인하기](./toolchain/02-project-toolchain.md)
 
 # 카고와 컴파일
