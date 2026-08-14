@@ -18,6 +18,7 @@ edit-url-template = "https://github.com/hatemogi/rust-course-intermediate/edit/m
 additional-css = ["theme/tooling.css"]
 
 [output.html.playground]
-editable = true
+editable = false
+runnable = false
 copyable = true
 line-numbers = true
