@@ -464,7 +464,7 @@
 .target-feature-matrix {
   display: grid;
   gap: 7px;
-  grid-template-columns: 180px repeat(4, 1fr);
+  grid-template-columns: 200px repeat(4, 1fr);
   grid-template-rows: 30px 42px repeat(2, 68px);
 }
 
@@ -475,7 +475,7 @@
   font-size: 18px;
   font-weight: 750;
   gap: 9px;
-  grid-column: 2 / 7;
+  grid-column: 2 / -1;
   justify-content: center;
 }
 
@@ -511,6 +511,7 @@
 .matrix-row-label code {
   color: var(--tooling-text);
   font-size: 15px;
+  white-space: nowrap;
 }
 
 .matrix-cell {
