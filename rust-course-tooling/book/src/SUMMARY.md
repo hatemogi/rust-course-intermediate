@@ -12,17 +12,17 @@
 - [`cargo check`와 카고 타깃](./compilation/03-cargo-check.md)
 - [컴파일 오류 읽기](./compilation/04-reading-errors.md)
 
-# 코드 형식과 정적 검사
+# 코드를 검사하고 자동으로 고치기
 
 - [`cargo fmt`로 코드 형식 맞추기](./formatting/05-cargo-fmt.md)
 - [형식 검사를 작업 흐름에 넣기](./formatting/06-fmt-check.md)
 - [클리피 실행하고 결과 읽기](./clippy/07-running-clippy.md)
 - [클리피 제안을 판단하는 기준](./clippy/08-judging-lints.md)
 - [VS Code와 Zed에서 rustfmt와 클리피 사용하기 ◆](./editors/09-vscode-zed.md)
+- [`cargo fix`와 자동 수정 검토하기](./cargo/10-cargo-fix.md)
 
 # 카고 프로젝트 관리 ◆
 
-- [`cargo fix`와 자동 수정 검토하기](./cargo/10-cargo-fix.md)
 - [의존성과 `Cargo.lock` 관리하기](./cargo/11-dependencies-lockfile.md)
 - [`cargo tree`로 의존성 관계 찾기](./cargo/12-cargo-tree.md)
 - [카고 피처와 검사 조합](./cargo/13-features.md)
