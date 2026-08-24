@@ -19,4 +19,5 @@ Rust 코드를 작성하는 일과 그 코드를 믿을 만한 상태로 만드�
 적용합니다. 도구의 출력을 그대로 따르지 않고 코드의 목적과 테스트 결과를 근거로
 수정할지 판단합니다.
 
-[교재 시작하기](book/src/index.md) · [전체 목차](book/src/SUMMARY.md)
+[교재 시작하기](https://hatemogi.github.io/rust-course-intermediate/tooling/) ·
+[전체 목차](https://hatemogi.github.io/rust-course-intermediate/tooling/toc.html)
