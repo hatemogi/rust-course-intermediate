@@ -17,3 +17,14 @@ Rust 도구 체인과 Cargo 프로젝트를 준비하고, 포맷, lint, 테스�
 
 각 장의 예제와 종합 실습을 직접 실행하려면 `rust-course-tooling` 디렉터리의
 README를 참고하세요.
+
+### 2. 모듈과 크레이트
+
+package, crate, module을 구분하고 코드를 여러 파일로 나누며, 공개 범위와 재공개를
+이용해 크레이트의 공개 API를 구성합니다.
+
+- [교재 읽기](https://hatemogi.github.io/rust-course-intermediate/modules-crates/)
+- [예제와 실습 코드](./rust-course-modules-crates)
+
+각 장의 예제와 종합 실습을 직접 실행하려면 `rust-course-modules-crates` 디렉터리의
+README를 참고하세요.

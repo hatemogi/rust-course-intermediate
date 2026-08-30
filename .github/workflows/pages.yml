@@ -47,6 +47,10 @@ jobs:
         working-directory: rust-course-tooling/book
         run: mdbook build -d "$GITHUB_WORKSPACE/_site/tooling"
 
+      - name: 모듈과 크레이트 교재 빌드
+        working-directory: rust-course-modules-crates/book
+        run: mdbook build -d "$GITHUB_WORKSPACE/_site/modules-crates"
+
       - name: 슬라이드 의존성 설치
         working-directory: rust-course-tooling/slides
         run: npm ci

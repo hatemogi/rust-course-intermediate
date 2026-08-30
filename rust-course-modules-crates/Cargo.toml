@@ -1,0 +1,9 @@
+[package]
+name = "rust-course-modules-crates"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# ANCHOR: external_dependency
+serde_json = "1"
+# ANCHOR_END: external_dependency

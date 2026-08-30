@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">패키지, 크레이트와 모듈의 관계</title>
+  <desc id="desc">하나의 카고 패키지 안에 라이브러리 크레이트 하나와 여러 실행 파일 크레이트가 있고, 각 크레이트가 자신의 루트와 모듈 트리를 가짐을 보여 주는 도식</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d141c"/>
+      <stop offset="1" stop-color="#151a24"/>
+    </linearGradient>
+    <linearGradient id="packageFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#18242d"/>
+      <stop offset="1" stop-color="#121b24"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#8fa3b8"/>
+    </marker>
+    <style>
+      text { font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; }
+      .label { fill: #f4f7fa; font-size: 28px; font-weight: 750; }
+      .small { fill: #aebdca; font-size: 21px; font-weight: 550; }
+      .path { fill: #90a2b5; font-family: "SFMono-Regular", Consolas, monospace; font-size: 19px; }
+      .module { fill: #d9e4ec; font-size: 21px; font-weight: 650; }
+      .arrow { fill: none; stroke: #8fa3b8; stroke-width: 3; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" rx="32" fill="url(#background)"/>
+  <text x="800" y="65" fill="#f4f7fa" font-size="34" font-weight="800" text-anchor="middle">하나의 패키지, 여러 크레이트, 각 크레이트의 모듈 트리</text>
+
+  <rect x="55" y="100" width="1490" height="745" rx="30" fill="url(#packageFill)" stroke="#f1b85b" stroke-width="4" filter="url(#shadow)"/>
+  <rect x="88" y="126" width="280" height="62" rx="16" fill="#362b1f" stroke="#f1b85b" stroke-width="2"/>
+  <text x="228" y="166" fill="#ffd27a" font-size="27" font-weight="800" text-anchor="middle">카고 패키지</text>
+
+  <rect x="1160" y="126" width="330" height="62" rx="16" fill="#151d26" stroke="#64788c" stroke-width="2"/>
+  <text x="1325" y="166" class="path" text-anchor="middle">Cargo.toml 하나가 관리</text>
+
+  <path class="arrow" d="M 800 260 L 800 315"/>
+  <path class="arrow" d="M 800 260 L 1210 260 L 1210 315"/>
+  <path class="arrow" d="M 800 260 L 390 260 L 390 315"/>
+  <text x="800" y="235" class="small" text-anchor="middle">각 크레이트 루트에서 별도로 컴파일</text>
+
+  <g>
+    <rect x="110" y="315" width="560" height="475" rx="24" fill="#10272a" stroke="#55d6c2" stroke-width="4"/>
+    <rect x="135" y="340" width="510" height="82" rx="17" fill="#17383a"/>
+    <text x="390" y="375" fill="#72e3d1" font-size="26" font-weight="800" text-anchor="middle">크레이트 루트</text>
+    <text x="390" y="405" class="path" text-anchor="middle">src/lib.rs</text>
+
+    <rect x="145" y="450" width="490" height="300" rx="20" fill="#111b24" stroke="#3a9f94" stroke-width="3"/>
+    <text x="175" y="492" class="label">라이브러리 크레이트</text>
+    <text x="175" y="525" class="path">크레이트 루트: lib.rs</text>
+    <line x1="190" y1="570" x2="190" y2="700" stroke="#648091" stroke-width="3"/>
+    <line x1="190" y1="590" x2="235" y2="590" stroke="#648091" stroke-width="3"/>
+    <line x1="190" y1="640" x2="235" y2="640" stroke="#648091" stroke-width="3"/>
+    <line x1="190" y1="690" x2="235" y2="690" stroke="#648091" stroke-width="3"/>
+    <circle cx="250" cy="590" r="8" fill="#55d6c2"/>
+    <circle cx="250" cy="640" r="8" fill="#55d6c2"/>
+    <circle cx="250" cy="690" r="8" fill="#55d6c2"/>
+    <text x="275" y="598" class="module">model 모듈</text>
+    <text x="275" y="648" class="module">parser 모듈</text>
+    <text x="275" y="698" class="module">report 모듈</text>
+    <text x="490" y="720" fill="#55d6c2" font-size="20" font-weight="700" text-anchor="middle">모듈 트리</text>
+  </g>
+
+  <g>
+    <rect x="720" y="315" width="350" height="475" rx="24" fill="#241f31" stroke="#b49cff" stroke-width="4"/>
+    <rect x="745" y="340" width="300" height="82" rx="17" fill="#332b48"/>
+    <text x="895" y="375" fill="#c8b8ff" font-size="26" font-weight="800" text-anchor="middle">크레이트 루트</text>
+    <text x="895" y="405" class="path" text-anchor="middle">src/main.rs</text>
+
+    <rect x="755" y="450" width="280" height="300" rx="20" fill="#111b24" stroke="#7965b6" stroke-width="3"/>
+    <text x="895" y="492" class="label" text-anchor="middle">실행 파일 크레이트</text>
+    <text x="895" y="525" class="path" text-anchor="middle">루트: main.rs</text>
+    <circle cx="825" cy="595" r="9" fill="#b49cff"/>
+    <line x1="825" y1="604" x2="825" y2="665" stroke="#7965b6" stroke-width="3"/>
+    <line x1="825" y1="635" x2="860" y2="635" stroke="#7965b6" stroke-width="3"/>
+    <text x="875" y="643" class="module">cli 모듈</text>
+    <text x="895" y="710" fill="#b49cff" font-size="20" font-weight="700" text-anchor="middle">독립된 모듈 트리</text>
+  </g>
+
+  <g>
+    <rect x="1120" y="315" width="350" height="475" rx="24" fill="#30231d" stroke="#ff9868" stroke-width="4"/>
+    <rect x="1145" y="340" width="300" height="82" rx="17" fill="#493026"/>
+    <text x="1295" y="375" fill="#ffb18c" font-size="26" font-weight="800" text-anchor="middle">크레이트 루트</text>
+    <text x="1295" y="405" class="path" text-anchor="middle">src/bin/admin.rs</text>
+
+    <rect x="1155" y="450" width="280" height="300" rx="20" fill="#111b24" stroke="#a95d3c" stroke-width="3"/>
+    <text x="1295" y="492" class="label" text-anchor="middle">실행 파일 크레이트</text>
+    <text x="1295" y="525" class="path" text-anchor="middle">루트: admin.rs</text>
+    <circle cx="1225" cy="595" r="9" fill="#ff9868"/>
+    <line x1="1225" y1="604" x2="1225" y2="665" stroke="#a95d3c" stroke-width="3"/>
+    <line x1="1225" y1="635" x2="1260" y2="635" stroke="#a95d3c" stroke-width="3"/>
+    <text x="1275" y="643" class="module">command 모듈</text>
+    <text x="1295" y="710" fill="#ff9868" font-size="20" font-weight="700" text-anchor="middle">독립된 모듈 트리</text>
+  </g>
+
+  <text x="800" y="828" fill="#9fb0bf" font-size="21" font-weight="600" text-anchor="middle">패키지는 관리 단위 · 크레이트는 컴파일 단위 · 모듈은 크레이트 안의 이름과 공개 범위 단위</text>
+</svg>

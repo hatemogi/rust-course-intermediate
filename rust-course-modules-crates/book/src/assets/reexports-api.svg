@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">재공개로 내부 경로와 외부 API 경로 분리하기</title>
+  <desc id="desc">비공개 model과 search 모듈의 공개 항목 Book과 title이 크레이트 루트의 pub use 선언을 거쳐 외부 사용자에게 library Book과 library title 경로로 공개되는 흐름</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d141c"/>
+      <stop offset="1" stop-color="#151a24"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#8fa3b8"/>
+    </marker>
+    <marker id="cyanArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#55d6c2"/>
+    </marker>
+    <style>
+      text { font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; }
+      .heading { fill: #f4f7fa; font-size: 29px; font-weight: 820; }
+      .label { fill: #edf3f7; font-size: 25px; font-weight: 760; }
+      .small { fill: #aebdca; font-size: 20px; font-weight: 550; }
+      .code { fill: #eef3f7; font-family: "SFMono-Regular", Consolas, monospace; font-size: 21px; }
+      .arrow { fill: none; stroke: #8fa3b8; stroke-width: 4; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" rx="32" fill="url(#background)"/>
+  <text x="800" y="66" fill="#f4f7fa" font-size="36" font-weight="850" text-anchor="middle">재공개는 내부 구조와 외부 경로를 분리합니다</text>
+
+  <rect x="55" y="112" width="1490" height="680" rx="30" fill="#111b24" stroke="#64788c" stroke-width="3" filter="url(#shadow)"/>
+  <text x="105" y="160" fill="#aebdca" font-size="22" font-weight="650">library 크레이트</text>
+
+  <rect x="95" y="195" width="480" height="525" rx="26" fill="#181f29" stroke="#b49cff" stroke-width="3"/>
+  <text x="335" y="246" class="heading" text-anchor="middle">내부 모듈</text>
+  <text x="335" y="277" class="small" text-anchor="middle">파일과 책임에 따라 자유롭게 구성</text>
+
+  <rect x="145" y="325" width="380" height="130" rx="20" fill="#29233a" stroke="#b49cff" stroke-width="3"/>
+  <text x="180" y="365" class="label">model 모듈</text>
+  <text x="180" y="405" class="code">pub struct Book</text>
+  <text x="485" y="365" fill="#f4c95d" font-size="18" font-weight="750" text-anchor="end">비공개 경로</text>
+
+  <rect x="145" y="510" width="380" height="130" rx="20" fill="#29233a" stroke="#b49cff" stroke-width="3"/>
+  <text x="180" y="550" class="label">search 모듈</text>
+  <text x="180" y="590" class="code">pub fn title</text>
+  <text x="485" y="550" fill="#f4c95d" font-size="18" font-weight="750" text-anchor="end">비공개 경로</text>
+
+  <rect x="660" y="235" width="400" height="445" rx="26" fill="#10272a" stroke="#55d6c2" stroke-width="4"/>
+  <text x="860" y="286" class="heading" text-anchor="middle">크레이트 루트</text>
+  <text x="860" y="318" fill="#72e3d1" font-size="21" font-weight="700" text-anchor="middle">외부에 보여 줄 경로를 선택</text>
+
+  <rect x="710" y="365" width="300" height="86" rx="18" fill="#17383a" stroke="#55d6c2" stroke-width="2"/>
+  <text x="860" y="417" class="code" text-anchor="middle">pub use model::Book;</text>
+
+  <rect x="710" y="505" width="300" height="86" rx="18" fill="#17383a" stroke="#55d6c2" stroke-width="2"/>
+  <text x="860" y="557" class="code" text-anchor="middle">pub use search::title;</text>
+
+  <path class="arrow" d="M 525 390 L 690 405"/>
+  <path class="arrow" d="M 525 575 L 690 550"/>
+
+  <rect x="1145" y="195" width="350" height="525" rx="26" fill="#241f31" stroke="#ff9868" stroke-width="3"/>
+  <text x="1320" y="246" class="heading" text-anchor="middle">외부 사용자</text>
+  <text x="1320" y="277" class="small" text-anchor="middle">내부 모듈 경로를 몰라도 됨</text>
+
+  <rect x="1190" y="350" width="260" height="100" rx="20" fill="#493026" stroke="#ff9868" stroke-width="3"/>
+  <text x="1320" y="392" class="code" text-anchor="middle">library::Book</text>
+  <text x="1320" y="425" class="small" text-anchor="middle">공개 경로</text>
+
+  <rect x="1190" y="510" width="260" height="100" rx="20" fill="#493026" stroke="#ff9868" stroke-width="3"/>
+  <text x="1320" y="552" class="code" text-anchor="middle">library::title</text>
+  <text x="1320" y="585" class="small" text-anchor="middle">공개 경로</text>
+
+  <path d="M 1060 410 L 1170 400" fill="none" stroke="#55d6c2" stroke-width="4" marker-end="url(#cyanArrow)"/>
+  <path d="M 1060 550 L 1170 560" fill="none" stroke="#55d6c2" stroke-width="4" marker-end="url(#cyanArrow)"/>
+
+  <rect x="290" y="750" width="1020" height="96" rx="22" fill="#1a2530" stroke="#344556" stroke-width="2"/>
+  <text x="800" y="791" fill="#f4c95d" font-size="23" font-weight="760" text-anchor="middle">model과 search의 파일 배치가 바뀌어도</text>
+  <text x="800" y="825" fill="#dce7ef" font-size="23" font-weight="650" text-anchor="middle">library::Book과 library::title 경로는 그대로 유지할 수 있습니다</text>
+</svg>
