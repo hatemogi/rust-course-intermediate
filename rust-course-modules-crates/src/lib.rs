@@ -33,12 +33,6 @@
 //! # fn main() {}
 //! ```
 
-// 실습 1: 세 구현 파일을 비공개 하위 모듈로 연결합니다.
-mod model;
-mod parser;
-mod report;
+// TODO: 세 구현 파일을 비공개 하위 모듈로 연결하세요.
 
-// 실습 2: 외부 사용자가 필요한 이름만 크레이트 루트에 재공개합니다.
-pub use model::{Task, TaskStatus};
-pub use parser::{ParseTaskError, parse_task};
-pub use report::render_report;
+// TODO: 외부 사용자가 필요한 타입과 함수만 크레이트 루트에 재공개하세요.
