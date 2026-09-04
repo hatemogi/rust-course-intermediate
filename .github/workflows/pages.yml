@@ -51,6 +51,10 @@ jobs:
         working-directory: rust-course-modules-crates/book
         run: mdbook build -d "$GITHUB_WORKSPACE/_site/modules-crates"
 
+      - name: 문자열 활용 교재 빌드
+        working-directory: rust-course-strings/book
+        run: mdbook build -d "$GITHUB_WORKSPACE/_site/strings"
+
       - name: 슬라이드 의존성 설치
         working-directory: rust-course-tooling/slides
         run: npm ci

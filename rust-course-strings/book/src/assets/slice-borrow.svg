@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">배열에서 연속된 구간을 빌리는 슬라이스</title>
+  <desc id="desc">네 원소를 소유한 scores 배열에서 인덱스 1부터 3 직전까지를 빌리면 middle 슬라이스가 값 80과 90의 시작 위치와 원소 개수 2를 기억한다. 원소를 복사하지 않으며 원본 배열이 계속 소유한다.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d141c"/>
+      <stop offset="1" stop-color="#151a24"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 16 16" markerWidth="16" markerHeight="16" refX="14" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0 0 L 16 8 L 0 16 z" fill="#55d6c2"/>
+    </marker>
+    <style>
+      text { font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; }
+      .heading { fill: #f4f7fa; font-size: 42px; font-weight: 850; }
+      .label { fill: #eef3f7; font-size: 28px; font-weight: 760; }
+      .small { fill: #aebdca; font-size: 22px; font-weight: 560; }
+      .code { fill: #eef3f7; font-family: "SFMono-Regular", Consolas, monospace; font-size: 27px; font-weight: 650; }
+      .index { fill: #8395a7; font-family: "SFMono-Regular", Consolas, monospace; font-size: 21px; }
+      .value { fill: #f4f7fa; font-family: "SFMono-Regular", Consolas, monospace; font-size: 38px; font-weight: 750; }
+      .borrowed-index { fill: #55d6c2; }
+      .borrowed-value { fill: #72e3d1; }
+      .fact { fill: #dce5ec; font-size: 22px; font-weight: 650; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" rx="32" fill="url(#background)"/>
+  <text x="800" y="72" class="heading" text-anchor="middle">슬라이스는 원본의 연속된 구간을 빌립니다</text>
+
+  <text x="150" y="150" class="label">원본 배열이 네 값을 소유합니다</text>
+  <text x="1450" y="150" class="code" text-anchor="end">scores: [i32; 4]</text>
+
+  <g filter="url(#shadow)">
+    <rect x="150" y="205" width="310" height="150" rx="18" fill="#1a2530" stroke="#53687b" stroke-width="3"/>
+    <rect x="480" y="205" width="310" height="150" rx="18" fill="#1a2530" stroke="#53687b" stroke-width="3"/>
+    <rect x="810" y="205" width="310" height="150" rx="18" fill="#1a2530" stroke="#53687b" stroke-width="3"/>
+    <rect x="1140" y="205" width="310" height="150" rx="18" fill="#1a2530" stroke="#53687b" stroke-width="3"/>
+  </g>
+
+  <text x="175" y="240" class="index">인덱스 0</text>
+  <text x="505" y="240" class="index borrowed-index">인덱스 1</text>
+  <text x="835" y="240" class="index borrowed-index">인덱스 2</text>
+  <text x="1165" y="240" class="index">인덱스 3</text>
+  <text x="305" y="305" class="value" text-anchor="middle">70</text>
+  <text x="635" y="305" class="value borrowed-value" text-anchor="middle">80</text>
+  <text x="965" y="305" class="value borrowed-value" text-anchor="middle">90</text>
+  <text x="1295" y="305" class="value" text-anchor="middle">100</text>
+
+  <path d="M 480 382 L 480 404 L 1120 404 L 1120 382" fill="none" stroke="#55d6c2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="800" y="445" fill="#55d6c2" font-size="25" font-weight="780" text-anchor="middle">범위 1..3 · 값 80, 90</text>
+
+  <rect x="150" y="510" width="580" height="220" rx="24" fill="#17242e" stroke="#b49cff" stroke-width="4" filter="url(#shadow)"/>
+  <text x="190" y="565" class="code">middle: &amp;[i32]</text>
+  <line x1="190" y1="592" x2="690" y2="592" stroke="#405364" stroke-width="2"/>
+  <text x="190" y="640" class="small">시작 위치</text>
+  <text x="690" y="640" class="code" text-anchor="end">scores[1]</text>
+  <text x="190" y="695" class="small">원소 개수</text>
+  <text x="690" y="695" class="code" text-anchor="end">2</text>
+
+  <path d="M 730 630 C 835 630, 880 520, 765 470 C 700 442, 637 455, 637 374" fill="none" stroke="#55d6c2" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="915" y="555" class="code">let middle = &amp;scores[1..3];</text>
+  <text x="915" y="610" class="label">새 배열을 만들지 않습니다</text>
+  <text x="915" y="650" class="small">슬라이스는 시작 위치와 길이로</text>
+  <text x="915" y="682" class="small">원본 안의 구간을 찾아갑니다.</text>
+
+  <rect x="150" y="790" width="1300" height="72" rx="20" fill="#111d25" stroke="#334858" stroke-width="2"/>
+  <circle cx="205" cy="826" r="9" fill="#55d6c2"/>
+  <text x="230" y="834" class="fact">원본이 계속 소유함</text>
+  <circle cx="650" cy="826" r="9" fill="#f4c95d"/>
+  <text x="675" y="834" class="fact">원소 복사 없음</text>
+  <circle cx="1010" cy="826" r="9" fill="#b49cff"/>
+  <text x="1035" y="834" class="fact">원본보다 오래 사용할 수 없음</text>
+</svg>

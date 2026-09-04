@@ -1,0 +1,24 @@
+[book]
+title = "우아한 Rust 중급: 문자열 활용"
+authors = ["rust-course-intermediate"]
+description = "String과 &str, UTF-8 텍스트 처리를 배우는 Rust 강의 교재"
+language = "ko"
+src = "src"
+
+[build]
+build-dir = "html"
+create-missing = false
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+site-url = "/rust-course-intermediate/strings/"
+git-repository-url = "https://github.com/hatemogi/rust-course-intermediate"
+edit-url-template = "https://github.com/hatemogi/rust-course-intermediate/edit/main/rust-course-strings/book/{path}"
+additional-css = ["theme/tooling.css"]
+
+[output.html.playground]
+editable = false
+runnable = false
+copyable = true
+line-numbers = true

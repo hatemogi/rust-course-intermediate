@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Rust 한글 문자열의 UTF-8 문자와 바이트 배치</title>
+  <desc id="desc">문자열 Rust 한글은 유니코드 스칼라 값 7개와 UTF-8 바이트 11개로 이루어진다. 영문자와 공백은 각각 한 바이트, 한과 글은 각각 세 바이트를 차지한다. chars는 스칼라 값 7개를 순회하고 bytes는 바이트 11개를 순회하며 len은 전체 바이트 길이 11을 반환한다.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d141c"/>
+      <stop offset="1" stop-color="#151a24"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+    <style>
+      text { font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; }
+      .heading { fill: #f4f7fa; font-size: 42px; font-weight: 850; }
+      .label { fill: #eef3f7; font-size: 27px; font-weight: 760; }
+      .small { fill: #aebdca; font-size: 21px; font-weight: 560; }
+      .code { fill: #eef3f7; font-family: "SFMono-Regular", Consolas, monospace; font-size: 28px; font-weight: 680; }
+      .scalar { fill: #f4f7fa; font-size: 35px; font-weight: 800; }
+      .point { fill: #aebdca; font-family: "SFMono-Regular", Consolas, monospace; font-size: 17px; }
+      .byte { fill: #f4f7fa; font-family: "SFMono-Regular", Consolas, monospace; font-size: 23px; font-weight: 700; }
+      .index { fill: #8395a7; font-family: "SFMono-Regular", Consolas, monospace; font-size: 17px; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" rx="32" fill="url(#background)"/>
+  <text x="800" y="68" class="heading" text-anchor="middle">문자 7개가 UTF-8 바이트 11개로 저장됩니다</text>
+  <rect x="560" y="98" width="480" height="66" rx="33" fill="#17242e" stroke="#53687b" stroke-width="2"/>
+  <text x="800" y="141" class="code" text-anchor="middle">text = "Rust 한글"</text>
+
+  <text x="85" y="263" fill="#55d6c2" font-size="28" font-weight="850">② chars()</text>
+  <text x="85" y="298" class="small">스칼라 값 7개</text>
+
+  <g filter="url(#shadow)">
+    <rect x="320" y="205" width="94" height="132" rx="18" fill="#123638" stroke="#55d6c2" stroke-width="3"/>
+    <rect x="420" y="205" width="94" height="132" rx="18" fill="#123638" stroke="#55d6c2" stroke-width="3"/>
+    <rect x="520" y="205" width="94" height="132" rx="18" fill="#123638" stroke="#55d6c2" stroke-width="3"/>
+    <rect x="620" y="205" width="94" height="132" rx="18" fill="#123638" stroke="#55d6c2" stroke-width="3"/>
+    <rect x="720" y="205" width="94" height="132" rx="18" fill="#123638" stroke="#55d6c2" stroke-width="3"/>
+    <rect x="820" y="205" width="294" height="132" rx="18" fill="#241f31" stroke="#b49cff" stroke-width="3"/>
+    <rect x="1120" y="205" width="294" height="132" rx="18" fill="#241f31" stroke="#b49cff" stroke-width="3"/>
+  </g>
+  <text x="367" y="264" class="scalar" text-anchor="middle">R</text>
+  <text x="467" y="264" class="scalar" text-anchor="middle">u</text>
+  <text x="567" y="264" class="scalar" text-anchor="middle">s</text>
+  <text x="667" y="264" class="scalar" text-anchor="middle">t</text>
+  <text x="767" y="258" class="small" text-anchor="middle">공백</text>
+  <text x="967" y="264" class="scalar" text-anchor="middle">한</text>
+  <text x="1267" y="264" class="scalar" text-anchor="middle">글</text>
+  <text x="367" y="310" class="point" text-anchor="middle">U+0052</text>
+  <text x="467" y="310" class="point" text-anchor="middle">U+0075</text>
+  <text x="567" y="310" class="point" text-anchor="middle">U+0073</text>
+  <text x="667" y="310" class="point" text-anchor="middle">U+0074</text>
+  <text x="767" y="310" class="point" text-anchor="middle">U+0020</text>
+  <text x="967" y="310" class="point" text-anchor="middle">U+D55C</text>
+  <text x="1267" y="310" class="point" text-anchor="middle">U+AE00</text>
+
+  <path d="M 320 350 L 320 402 M 414 350 L 414 402 M 420 350 L 420 402 M 514 350 L 514 402 M 520 350 L 520 402 M 614 350 L 614 402 M 620 350 L 620 402 M 714 350 L 714 402 M 720 350 L 720 402 M 814 350 L 814 402" stroke="#55d6c2" stroke-width="2" stroke-dasharray="6 7" opacity="0.45"/>
+  <path d="M 820 350 L 820 402 M 1114 350 L 1114 402 M 1120 350 L 1120 402 M 1414 350 L 1414 402" stroke="#b49cff" stroke-width="2" stroke-dasharray="6 7" opacity="0.55"/>
+
+  <text x="85" y="474" fill="#f4c95d" font-size="28" font-weight="850">③ bytes()</text>
+  <text x="85" y="509" class="small">바이트 11개</text>
+
+  <g filter="url(#shadow)">
+    <rect x="320" y="405" width="94" height="126" rx="15" fill="#172b2d" stroke="#55d6c2" stroke-width="2"/>
+    <rect x="420" y="405" width="94" height="126" rx="15" fill="#172b2d" stroke="#55d6c2" stroke-width="2"/>
+    <rect x="520" y="405" width="94" height="126" rx="15" fill="#172b2d" stroke="#55d6c2" stroke-width="2"/>
+    <rect x="620" y="405" width="94" height="126" rx="15" fill="#172b2d" stroke="#55d6c2" stroke-width="2"/>
+    <rect x="720" y="405" width="94" height="126" rx="15" fill="#172b2d" stroke="#55d6c2" stroke-width="2"/>
+    <rect x="820" y="405" width="94" height="126" rx="15" fill="#292337" stroke="#b49cff" stroke-width="2"/>
+    <rect x="920" y="405" width="94" height="126" rx="15" fill="#292337" stroke="#b49cff" stroke-width="2"/>
+    <rect x="1020" y="405" width="94" height="126" rx="15" fill="#292337" stroke="#b49cff" stroke-width="2"/>
+    <rect x="1120" y="405" width="94" height="126" rx="15" fill="#292337" stroke="#b49cff" stroke-width="2"/>
+    <rect x="1220" y="405" width="94" height="126" rx="15" fill="#292337" stroke="#b49cff" stroke-width="2"/>
+    <rect x="1320" y="405" width="94" height="126" rx="15" fill="#292337" stroke="#b49cff" stroke-width="2"/>
+  </g>
+  <text x="367" y="438" class="index" text-anchor="middle">0</text>
+  <text x="467" y="438" class="index" text-anchor="middle">1</text>
+  <text x="567" y="438" class="index" text-anchor="middle">2</text>
+  <text x="667" y="438" class="index" text-anchor="middle">3</text>
+  <text x="767" y="438" class="index" text-anchor="middle">4</text>
+  <text x="867" y="438" class="index" text-anchor="middle">5</text>
+  <text x="967" y="438" class="index" text-anchor="middle">6</text>
+  <text x="1067" y="438" class="index" text-anchor="middle">7</text>
+  <text x="1167" y="438" class="index" text-anchor="middle">8</text>
+  <text x="1267" y="438" class="index" text-anchor="middle">9</text>
+  <text x="1367" y="438" class="index" text-anchor="middle">10</text>
+  <text x="367" y="493" class="byte" text-anchor="middle">52</text>
+  <text x="467" y="493" class="byte" text-anchor="middle">75</text>
+  <text x="567" y="493" class="byte" text-anchor="middle">73</text>
+  <text x="667" y="493" class="byte" text-anchor="middle">74</text>
+  <text x="767" y="493" class="byte" text-anchor="middle">20</text>
+  <text x="867" y="493" class="byte" text-anchor="middle">ED</text>
+  <text x="967" y="493" class="byte" text-anchor="middle">95</text>
+  <text x="1067" y="493" class="byte" text-anchor="middle">9C</text>
+  <text x="1167" y="493" class="byte" text-anchor="middle">EA</text>
+  <text x="1267" y="493" class="byte" text-anchor="middle">B8</text>
+  <text x="1367" y="493" class="byte" text-anchor="middle">80</text>
+  <text x="367" y="519" class="index" text-anchor="middle">1바이트</text>
+  <text x="467" y="519" class="index" text-anchor="middle">1바이트</text>
+  <text x="567" y="519" class="index" text-anchor="middle">1바이트</text>
+  <text x="667" y="519" class="index" text-anchor="middle">1바이트</text>
+  <text x="767" y="519" class="index" text-anchor="middle">1바이트</text>
+
+  <path d="M 320 574 L 320 600 L 1414 600 L 1414 574" fill="none" stroke="#ff9868" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="590" y="628" width="554" height="76" rx="38" fill="#30231d" stroke="#ff9868" stroke-width="3"/>
+  <text x="867" y="676" fill="#ffb184" font-size="29" font-weight="820" text-anchor="middle">① len() = 11바이트</text>
+
+  <rect x="200" y="760" width="1200" height="88" rx="22" fill="#111d25" stroke="#334858" stroke-width="2"/>
+  <circle cx="270" cy="804" r="10" fill="#55d6c2"/>
+  <text x="298" y="813" class="label">영문자·공백은 각각 1바이트</text>
+  <circle cx="865" cy="804" r="10" fill="#b49cff"/>
+  <text x="893" y="813" class="label">한글은 각 글자가 3바이트</text>
+</svg>

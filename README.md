@@ -28,3 +28,14 @@ package, crate, module을 구분하고 코드를 여러 파일로 나누며, 공
 
 각 장의 예제와 종합 실습을 직접 실행하려면 `rust-course-modules-crates` 디렉터리의
 README를 참고하세요.
+
+### 3. 문자열 활용
+
+`String`, `&str`과 슬라이스의 관계를 이해하고 UTF-8 문자열을 만들고 수정하며,
+검색·분리·변환하는 방법을 배웁니다.
+
+- [교재 읽기](https://hatemogi.github.io/rust-course-intermediate/strings/)
+- [예제와 실습 코드](./rust-course-strings)
+
+각 장의 예제와 종합 실습을 직접 실행하려면 `rust-course-strings` 디렉터리의
+README를 참고하세요.
