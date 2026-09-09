@@ -1,4 +1,6 @@
+// ANCHOR: service_open
 pub mod service {
+    // ANCHOR_END: service_open
     // ANCHOR: child_access
     fn private_key() -> &'static str {
         "rust-2026"
@@ -23,7 +25,9 @@ pub mod service {
         internal::trace_id()
     }
     // ANCHOR_END: private_path
+    // ANCHOR: service_close
 }
+// ANCHOR_END: service_close
 
 fn check_module_visibility() {
     assert_eq!(service::api::key_length(), 9);

@@ -10,7 +10,7 @@
 # 모듈 연결하기
 
 - [경로와 `use`](./core/03-paths-use.md)
-- [공개 범위와 캡슐화](./core/04-privacy.md)
+- [모듈 구성 요소의 공개 범위](./core/04-privacy.md)
 - [라이브러리와 실행 파일 나누기](./core/05-lib-bin.md)
 - [재공개로 API 구성하기](./core/06-reexports.md)
 - [워크스페이스와 크레이트 경계](./core/07-workspace.md)

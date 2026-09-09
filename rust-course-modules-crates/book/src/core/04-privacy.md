@@ -1,4 +1,4 @@
-# 공개 범위와 캡슐화
+# 모듈 구성 요소의 공개 범위
 
 Rust의 항목은 기본적으로 비공개입니다. 모듈<sub>module</sub> 바깥에서도 항목에
 접근할 수 있게 하려면 `pub` 공개 범위 문법을 사용합니다.
@@ -16,10 +16,12 @@ Rust의 항목은 기본적으로 비공개입니다. 모듈<sub>module</sub> �
 
 ## 자식 모듈에서 부모의 비공개 항목 사용하기
 
-다음 코드는 `service` 모듈 안에 있습니다.
+다음 코드는 `service` 모듈과 그 안에 있는 항목을 함께 보여줍니다.
 
 ```rust
+{{#include ../../../examples/03_privacy.rs:service_open}}
 {{#include ../../../examples/03_privacy.rs:child_access}}
+{{#include ../../../examples/03_privacy.rs:service_close}}
 ```
 
 `api::key_length`는 자식 모듈에 있으므로 부모인 `service`의 비공개 함수
@@ -31,12 +33,14 @@ Rust의 항목은 기본적으로 비공개입니다. 모듈<sub>module</sub> �
 모든 모듈이 공개되어야 합니다. 위 예제에서 `service::api::key_length` 경로를
 외부에 공개하려면 `service`, `api`, `key_length`에 모두 `pub`이 필요합니다.
 
-## 비공개 모듈을 공개 함수로 감싸기
+## 비공개 모듈에 공개 함수로 접근하기
 
-다음 코드도 `service` 모듈 안에 있습니다.
+다음 코드도 `service` 모듈 선언과 함께 살펴봅니다.
 
 ```rust
+{{#include ../../../examples/03_privacy.rs:service_open}}
 {{#include ../../../examples/03_privacy.rs:private_path}}
+{{#include ../../../examples/03_privacy.rs:service_close}}
 ```
 
 `internal` 모듈 안의 `trace_id` 함수에 `pub`이 붙어 있어도 `internal` 모듈 자체가
@@ -52,17 +56,22 @@ Rust의 항목은 기본적으로 비공개입니다. 모듈<sub>module</sub> �
 
 | 문법 | 접근할 수 있는 범위 |
 |---|---|
+| `pub` | 상위 경로가 모두 공개되어 있다면 외부 크레이트에서도 접근할 수 있습니다. |
 | `pub(self)` | 현재 모듈과 그 자식 모듈에서 접근할 수 있습니다. `pub`을 쓰지 않은 경우와 같습니다. |
 | `pub(crate)` | 현재 크레이트<sub>crate</sub> 안에서 접근할 수 있습니다. |
 | `pub(super)` | 부모 모듈 안에서 접근할 수 있습니다. |
 | `pub(in crate::경로)` | 지정한 조상 모듈과 그 자식 모듈에서 접근할 수 있습니다. |
+
+일반 `pub`은 현재 크레이트 안으로 범위를 제한하지 않습니다. 다만 항목에 `pub`을
+붙였더라도 그 항목으로 이어지는 상위 모듈 가운데 하나가 비공개라면 외부
+크레이트에서 해당 경로를 사용할 수 없습니다.
 
 외부 API가 아닌 크레이트 내부 협력에는 `pub(crate)`나 `pub(super)`처럼 제한된
 공개 범위를 고려합니다. `pub(in crate::경로)`의 경로는 항목을 감싸는 조상
 모듈이어야 합니다. 형제 모듈이나 자식 모듈을 지정해 공개 범위를 옆이나 아래로
 넓힐 수는 없습니다.
 
-## 제한 공개 적용하기
+## 최소한의 범위로 공개하기
 
 ```rust
 {{#include ../../../examples/03_privacy.rs:restricted_visibility}}
