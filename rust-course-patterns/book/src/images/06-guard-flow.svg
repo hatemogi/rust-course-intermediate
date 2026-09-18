@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 700" role="img" aria-labelledby="title desc">
+  <title id="title">매치 가드가 있는 갈래의 검사 순서</title>
+  <desc id="desc">값에서 패턴을 검사하고, 패턴이 매칭(matching)되면 바인딩을 만든 뒤 가드를 검사하며, 패턴이 매칭되지 않거나 가드가 거짓이면 다음 갈래(branch)로 이동하는 흐름도</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8c9aa7"/>
+    </marker>
+  </defs>
+  <rect width="1440" height="700" rx="28" fill="#10151c"/>
+  <text x="64" y="74" fill="#eef3f7" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="38" font-weight="700">매치 가드가 있는 갈래의 검사 순서</text>
+
+  <g font-family="Pretendard, Apple SD Gothic Neo, sans-serif" text-anchor="middle">
+    <rect x="72" y="260" width="130" height="104" rx="18" fill="#202c39" stroke="#344556" stroke-width="2"/>
+    <text x="137" y="324" fill="#eef3f7" font-size="30">값</text>
+
+    <path d="M 350 234 L 470 312 L 350 390 L 230 312 Z" fill="#202c39" stroke="#55d6c2" stroke-width="3"/>
+    <text x="350" y="304" fill="#eef3f7" font-size="27">패턴과</text>
+    <text x="350" y="339" fill="#eef3f7" font-size="27">매칭?</text>
+
+    <rect x="526" y="260" width="218" height="104" rx="18" fill="#202c39" stroke="#344556" stroke-width="2"/>
+    <text x="635" y="304" fill="#eef3f7" font-size="26">바인딩</text>
+    <text x="635" y="339" fill="#eef3f7" font-size="26">만들기</text>
+
+    <path d="M 876 234 L 996 312 L 876 390 L 756 312 Z" fill="#202c39" stroke="#f4c95d" stroke-width="3"/>
+    <text x="876" y="304" fill="#eef3f7" font-size="27">가드가</text>
+    <text x="876" y="339" fill="#eef3f7" font-size="27">참?</text>
+
+    <rect x="1052" y="260" width="270" height="104" rx="18" fill="#16352f" stroke="#55d6c2" stroke-width="3"/>
+    <text x="1187" y="304" fill="#eef3f7" font-size="26">이 갈래의</text>
+    <text x="1187" y="339" fill="#eef3f7" font-size="26">본문 실행</text>
+
+    <rect x="562" y="514" width="512" height="104" rx="18" fill="#34251d" stroke="#f47b32" stroke-width="3"/>
+    <text x="818" y="578" fill="#eef3f7" font-size="26">다음 match 갈래(branch) 검사</text>
+  </g>
+
+  <g fill="none" stroke="#8c9aa7" stroke-width="4" marker-end="url(#arrow)">
+    <line x1="202" y1="312" x2="230" y2="312"/>
+    <line x1="470" y1="312" x2="526" y2="312"/>
+    <line x1="744" y1="312" x2="756" y2="312"/>
+    <line x1="996" y1="312" x2="1052" y2="312"/>
+    <path d="M 350 390 L 350 566 L 562 566"/>
+    <path d="M 876 390 L 876 514"/>
+  </g>
+
+  <g fill="#b8c4ce" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="24" font-weight="700">
+    <text x="486" y="288">매칭</text>
+    <text x="1010" y="288">참</text>
+    <text x="372" y="466">매칭 실패</text>
+    <text x="900" y="462">거짓</text>
+  </g>
+</svg>

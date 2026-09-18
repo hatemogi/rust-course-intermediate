@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 720" role="img" aria-labelledby="title desc">
+  <title id="title">슬라이스 패턴이 원소를 나누는 방식</title>
+  <desc id="desc">네 원소 슬라이스에서 첫 원소는 first, 가운데 두 원소는 middle, 마지막 원소는 last에 바인딩되며, 두 원소일 때 middle은 비고 한 원소일 때는 패턴과 매칭(matching)되지 않음을 보여 주는 도식</desc>
+  <rect width="1440" height="720" rx="28" fill="#10151c"/>
+  <text x="64" y="74" fill="#eef3f7" font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="38" font-weight="700">슬라이스 패턴이 원소를 나누는 방식</text>
+  <text x="720" y="142" fill="#f4c95d" font-family="SFMono-Regular, Menlo, monospace" font-size="32" text-anchor="middle">[first, middle @ .., last]</text>
+
+  <g font-family="SFMono-Regular, Menlo, monospace" font-size="34" text-anchor="middle">
+    <rect x="250" y="206" width="220" height="116" rx="16" fill="#202c39" stroke="#55d6c2" stroke-width="3"/>
+    <rect x="490" y="206" width="220" height="116" rx="16" fill="#202c39" stroke="#f4c95d" stroke-width="3"/>
+    <rect x="730" y="206" width="220" height="116" rx="16" fill="#202c39" stroke="#f4c95d" stroke-width="3"/>
+    <rect x="970" y="206" width="220" height="116" rx="16" fill="#202c39" stroke="#f47b32" stroke-width="3"/>
+    <text x="360" y="278" fill="#eef3f7">10</text>
+    <text x="600" y="278" fill="#eef3f7">20</text>
+    <text x="840" y="278" fill="#eef3f7">30</text>
+    <text x="1080" y="278" fill="#eef3f7">40</text>
+  </g>
+
+  <g fill="none" stroke-width="4">
+    <path d="M 360 338 L 360 390" stroke="#55d6c2"/>
+    <path d="M 600 338 L 600 370 L 840 370 L 840 338 M 720 370 L 720 418" stroke="#f4c95d"/>
+    <path d="M 1080 338 L 1080 390" stroke="#f47b32"/>
+  </g>
+  <g font-family="Pretendard, Apple SD Gothic Neo, sans-serif" font-size="28" font-weight="700" text-anchor="middle">
+    <text x="360" y="430" fill="#55d6c2">first</text>
+    <text x="720" y="458" fill="#f4c95d">middle @ ..</text>
+    <text x="1080" y="430" fill="#f47b32">last</text>
+  </g>
+
+  <line x1="120" y1="484" x2="1320" y2="484" stroke="#344556" stroke-width="2"/>
+  <g font-family="Pretendard, Apple SD Gothic Neo, sans-serif">
+    <text x="180" y="540" fill="#eef3f7" font-size="28" font-weight="700">원소가 넷</text>
+    <text x="410" y="540" fill="#b8c4ce" font-size="27">first = 10</text>
+    <text x="650" y="540" fill="#f4c95d" font-size="27">middle = [20, 30]</text>
+    <text x="1040" y="540" fill="#b8c4ce" font-size="27">last = 40</text>
+
+    <text x="180" y="604" fill="#eef3f7" font-size="28" font-weight="700">원소가 둘</text>
+    <text x="410" y="604" fill="#b8c4ce" font-size="27">first = 10</text>
+    <text x="650" y="604" fill="#f4c95d" font-size="27">middle = []</text>
+    <text x="1040" y="604" fill="#b8c4ce" font-size="27">last = 20</text>
+
+    <text x="180" y="668" fill="#eef3f7" font-size="28" font-weight="700">원소가 하나</text>
+    <text x="410" y="668" fill="#f47b32" font-size="27">패턴과 매칭되지 않음</text>
+  </g>
+</svg>

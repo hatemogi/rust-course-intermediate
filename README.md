@@ -39,3 +39,14 @@ README를 참고하세요.
 
 각 장의 예제와 종합 실습을 직접 실행하려면 `rust-course-strings` 디렉터리의
 README를 참고하세요.
+
+### 4. 패턴 문법
+
+값의 구조를 확인하고 필요한 부분에 이름을 붙이는 Rust 패턴 문법을 배웁니다.
+`match`, 구조 분해, 매치 가드와 참조 패턴을 예제와 실습으로 익힙니다.
+
+- [교재 읽기](https://hatemogi.github.io/rust-course-intermediate/patterns/)
+- [예제와 실습 코드](./rust-course-patterns)
+
+각 장의 예제와 종합 실습을 직접 실행하려면 `rust-course-patterns` 디렉터리의
+README를 참고하세요.

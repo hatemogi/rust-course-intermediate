@@ -55,6 +55,13 @@ jobs:
         working-directory: rust-course-strings/book
         run: mdbook build -d "$GITHUB_WORKSPACE/_site/strings"
 
+      - name: Rust 코드 발췌 도구 빌드
+        run: cargo build --locked --manifest-path mdbook-rustdoc/Cargo.toml
+
+      - name: 패턴 문법 교재 빌드
+        working-directory: rust-course-patterns/book
+        run: mdbook build -d "$GITHUB_WORKSPACE/_site/patterns"
+
       - name: 슬라이드 의존성 설치
         working-directory: rust-course-tooling/slides
         run: npm ci
