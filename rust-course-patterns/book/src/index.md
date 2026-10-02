@@ -1,5 +1,7 @@
 # 우아한 Rust 중급: 패턴 문법
 
+![우아한 Rust 중급: 패턴 문법 한국어 커버](images/cover-ko.png)
+
 패턴은 값의 모양을 확인하면서 그 값의 일부에 이름을 붙이는 문법입니다. `match`의
 각 갈래<sub>branch</sub>뿐 아니라 `let`, 함수 매개변수, `for`, `if let`,
 `let else`에서도 패턴을 사용합니다.
