@@ -403,3 +403,22 @@ html.recording-pip-guide .sidebar::after {
         break-inside: avoid;
     }
 }
+
+/* 커버 바로 앞의 제목만 숨기고 다른 장의 제목은 그대로 표시합니다. */
+.content main > h1:has(+ .course-cover) {
+    display: none;
+}
+
+.content main:has(> h1:first-child + .course-cover) {
+    padding-top: 2rem;
+}
+
+.content .course-cover {
+    margin-top: 0;
+}
+
+.content .course-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+}

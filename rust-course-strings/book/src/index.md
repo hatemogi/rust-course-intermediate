@@ -1,6 +1,8 @@
 # 우아한 Rust 중급: 문자열 활용
 
-![우아한 Rust 중급: 문자열 활용 한국어 커버](images/cover-ko.png)
+<p class="course-cover">
+  <img src="images/cover-ko.png" alt="우아한 Rust 중급: 문자열 활용 한국어 커버">
+</p>
 
 문자열은 파일 경로, 사용자 입력, JSON 필드와 오류 메시지처럼 거의 모든
 프로그램의 경계에 나타납니다. Rust에서는 문자열을 소유하는 `String`과 문자열의

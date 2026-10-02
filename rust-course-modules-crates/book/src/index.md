@@ -1,6 +1,8 @@
 # 우아한 Rust 중급: 패키지·크레이트·모듈
 
-![우아한 Rust 중급: 패키지·크레이트·모듈 한국어 커버](images/cover-ko.png)
+<p class="course-cover">
+  <img src="images/cover-ko.png" alt="우아한 Rust 중급: 패키지·크레이트·모듈 한국어 커버">
+</p>
 
 프로그램이 커지면 이름공간<sub>namespace</sub>을 나누어 이름 충돌을 막는 것만으로는
 부족합니다. 어떤 코드가 어떤 책임을 맡는지, 외부에서 무엇을 사용할 수 있는지
