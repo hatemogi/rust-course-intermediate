@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" role="img" aria-labelledby="title desc">
+<title id="title">Result를 모으는 세 가지 방식</title>
+<desc id="desc">같은 입력 3000, rust, 443, invalid를 비교합니다. Result로 collect하면 rust의 오류에서 멈춥니다. Vec으로 collect하면 네 결과를 그대로 모읍니다. for와 match 예제는 성공한 값과 실패한 입력·오류를 두 벡터로 나누어 담습니다. error1과 error2는 각 입력에서 발생한 오류를 뜻합니다.</desc>
+<rect width="1440" height="800" rx="28" fill="#10151c"/>
+<g font-family="Pretendard, Apple SD Gothic Neo, Noto Sans KR, sans-serif">
+<text x="48" y="62" font-size="38" fill="#eef3f7" font-weight="700">Result를 모으는 세 가지 방식</text>
+<text x="48" y="108" font-size="28" fill="#b8c4ce">입력: ["3000", "rust", "443", "invalid"] → 각 문자열을 u16으로 변환</text>
+<rect x="32" y="140" width="1376" height="184" rx="18" fill="#19222d" stroke="#344556" stroke-width="2"/>
+<text x="56" y="180" font-size="30" fill="#f4c95d" font-weight="700">collect::&lt;Result&lt;Vec&lt;_&gt;, _&gt;&gt;()</text>
+<text x="970" y="180" font-size="26" fill="#b8c4ce">첫 오류에서 멈춤</text>
+<rect x="56" y="200" width="316" height="54" rx="10" fill="#10151c" stroke="#55d6c2"/>
+<text x="76" y="236" font-size="28" fill="#55d6c2">Ok(3000)</text>
+<rect x="392" y="200" width="316" height="54" rx="10" fill="#10151c" stroke="#f47b32"/>
+<text x="412" y="236" font-size="28" fill="#f47b32">Err(error1)</text>
+<rect x="728" y="200" width="316" height="54" rx="10" fill="#10151c" stroke="#b8c4ce"/>
+<text x="748" y="236" font-size="28" fill="#b8c4ce">처리하지 않음</text>
+<rect x="1064" y="200" width="316" height="54" rx="10" fill="#10151c" stroke="#b8c4ce"/>
+<text x="1084" y="236" font-size="28" fill="#b8c4ce">처리하지 않음</text>
+<text x="56" y="293" font-size="28" fill="#eef3f7">반환값: Err(error1) · 앞서 모은 3000도 반환하지 않습니다.</text>
+<rect x="32" y="340" width="1376" height="184" rx="18" fill="#19222d" stroke="#344556" stroke-width="2"/>
+<text x="56" y="380" font-size="30" fill="#f4c95d" font-weight="700">collect::&lt;Vec&lt;Result&lt;_, _&gt;&gt;&gt;()</text>
+<text x="970" y="380" font-size="26" fill="#b8c4ce">모든 결과를 그대로 모음</text>
+<rect x="56" y="400" width="316" height="54" rx="10" fill="#10151c" stroke="#55d6c2"/>
+<text x="76" y="436" font-size="28" fill="#55d6c2">Ok(3000)</text>
+<rect x="392" y="400" width="316" height="54" rx="10" fill="#10151c" stroke="#f47b32"/>
+<text x="412" y="436" font-size="28" fill="#f47b32">Err(error1)</text>
+<rect x="728" y="400" width="316" height="54" rx="10" fill="#10151c" stroke="#55d6c2"/>
+<text x="748" y="436" font-size="28" fill="#55d6c2">Ok(443)</text>
+<rect x="1064" y="400" width="316" height="54" rx="10" fill="#10151c" stroke="#f47b32"/>
+<text x="1084" y="436" font-size="28" fill="#f47b32">Err(error2)</text>
+<text x="56" y="493" font-size="28" fill="#eef3f7">결과: [Ok(3000), Err(error1), Ok(443), Err(error2)]</text>
+<rect x="32" y="540" width="1376" height="224" rx="18" fill="#19222d" stroke="#344556" stroke-width="2"/>
+<text x="56" y="580" font-size="30" fill="#f4c95d" font-weight="700">for와 match로 두 벡터에 나누어 담기</text>
+<text x="970" y="580" font-size="26" fill="#b8c4ce">모든 입력을 처리</text>
+<rect x="56" y="600" width="316" height="54" rx="10" fill="#10151c" stroke="#55d6c2"/>
+<text x="76" y="636" font-size="28" fill="#55d6c2">Ok(3000)</text>
+<rect x="392" y="600" width="316" height="54" rx="10" fill="#10151c" stroke="#f47b32"/>
+<text x="412" y="636" font-size="28" fill="#f47b32">Err(error1)</text>
+<rect x="728" y="600" width="316" height="54" rx="10" fill="#10151c" stroke="#55d6c2"/>
+<text x="748" y="636" font-size="28" fill="#55d6c2">Ok(443)</text>
+<rect x="1064" y="600" width="316" height="54" rx="10" fill="#10151c" stroke="#f47b32"/>
+<text x="1084" y="636" font-size="28" fill="#f47b32">Err(error2)</text>
+<text x="56" y="693" font-size="28" fill="#eef3f7">ports: [3000, 443]</text>
+<text x="56" y="733" font-size="28" fill="#eef3f7">errors: [("rust", error1), ("invalid", error2)]</text>
+</g>
+</svg>

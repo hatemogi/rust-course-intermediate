@@ -1,0 +1,11 @@
+# 썸네일 생성 프롬프트
+
+내장 이미지 생성 도구로 제작했습니다.
+
+## 한국어
+
+Use case: ads-marketing. Create a polished Korean YouTube thumbnail for an intermediate Rust programming course, wide 16:9 composition, ideally 1672x941 pixels. Match this established course-series aesthetic: cinematic photoreal 3D brushed dark metal machinery, black/navy studio background, orange glow upper left and electric blue rim light right, reflective dark floor, extremely bold readable typography left and hero mechanism right. Exact text on left: small orange header '우아한 Rust 중급', very large white title on two lines 'Option' then 'Result', a modest orange '&' between the two. On the right, two separate horizontal metal modules stacked vertically, representing distinct enum types. Top module splits into two chambers labeled exactly 'Some' and 'None': Some contains a glowing orange crystal cube, None is an empty outlined blue chamber. Bottom module splits into chambers labeled exactly 'Ok' and 'Err': Ok contains a glowing blue cube and check mark, Err contains a warm orange warning triangle. Make the two type pairs clearly distinct, not one four-way branch. Large clean forms, strong contrast, spacious margins, thumbnail legibility, professional premium technical teaching artwork. No other text, no watermarks, no Rust logo, no people. Accurate readable Korean header. Opaque background.
+
+## 영어
+
+Use case: ads-marketing. Create the English localized companion of the supplied Korean intermediate Rust course thumbnail. Preserve the premium cinematic black/navy background, orange light left and blue rim light right, reflective floor, brushed metal twin modules on right, top Some filled orange crystal / None empty blue chamber, bottom Ok blue crystal checkmark / Err orange warning triangle. Preserve correct labels Some, None, Ok, Err. Recompose to exactly 1200x781 pixels landscape, the same format as other English course thumbnails. On the left replace all Korean with exact orange uppercase header 'INTERMEDIATE RUST', and a huge white title 'OPTION' above 'RESULT', with a smaller orange '&' between. Leave generous margins, fit the full header, very readable bold condensed sans serif. Match the reference's style and concept closely, but allow resizing and repositioning to suit the taller aspect ratio. No Korean text, no additional text or watermark, no people. Opaque background.

@@ -62,6 +62,10 @@ jobs:
         working-directory: rust-course-patterns/book
         run: mdbook build -d "$GITHUB_WORKSPACE/_site/patterns"
 
+      - name: Option과 Result 교재 빌드
+        working-directory: rust-course-option-result/book
+        run: mdbook build -d "$GITHUB_WORKSPACE/_site/option-result"
+
       - name: 슬라이드 의존성 설치
         working-directory: rust-course-tooling/slides
         run: npm ci

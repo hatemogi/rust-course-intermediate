@@ -50,3 +50,14 @@ README를 참고하세요.
 
 각 장의 예제와 종합 실습을 직접 실행하려면 `rust-course-patterns` 디렉터리의
 README를 참고하세요.
+
+### 5. Option과 Result
+
+값이 없거나 작업이 실패하는 상황을 타입으로 표현하고, 여러 처리 단계를 연결하는
+방법을 배웁니다. 오류의 종류를 구분하고 어디에서 처리할지도 함께 살펴봅니다.
+
+- [교재 읽기](https://hatemogi.github.io/rust-course-intermediate/option-result/)
+- [예제와 실습 코드](./rust-course-option-result)
+
+각 장의 예제와 종합 실습을 직접 실행하려면 `rust-course-option-result` 디렉터리의
+README를 참고하세요.

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" role="img" aria-labelledby="title desc">
+<title id="title">?가 바꾸는 실행 흐름</title>
+<desc id="desc">left와 right의 물음표는 Some에서 값을 꺼내 다음 줄로 진행하고, None이면 현재 함수를 종료하고 호출한 쪽에 None을 반환합니다.</desc>
+<defs><marker id="green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#55d6c2"/></marker><marker id="orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f47b32"/></marker></defs>
+<rect width="1440" height="800" rx="28" fill="#10151c"/>
+<g font-family="Pretendard, Apple SD Gothic Neo, Noto Sans KR, sans-serif">
+<text x="56" y="70" font-size="38" fill="#eef3f7" text-anchor="start" font-weight="700">?가 바꾸는 실행 흐름</text>
+<text x="56" y="118" font-size="28" fill="#b8c4ce" text-anchor="start" font-weight="500">Some이면 다음 줄로, None이면 현재 함수 밖으로 돌아갑니다.</text>
+<rect x="55" y="150" width="880" height="585" rx="18" fill="#151e27" stroke="#344556" stroke-width="3"/>
+<text x="90" y="200" font-size="32" fill="#f4c95d" text-anchor="start" font-weight="700">현재 함수: checked_average</text>
+<rect x="1000" y="150" width="380" height="585" rx="18" fill="#19222d" stroke="#344556" stroke-width="3"/>
+<text x="1190" y="204" font-size="32" fill="#eef3f7" text-anchor="middle" font-weight="700">호출한 쪽</text>
+<rect x="115" y="235" width="650" height="74" rx="18" fill="#19222d" stroke="#55d6c2" stroke-width="3"/>
+<text x="440" y="283" font-size="31" fill="#eef3f7" text-anchor="middle" font-weight="500">let left = left?;</text>
+<path d="M 440 311 L 440 361" fill="none" stroke="#55d6c2" stroke-width="4" marker-end="url(#green)"/>
+<text x="470" y="348" font-size="27" fill="#55d6c2" text-anchor="start" font-weight="500">Some(left)</text>
+<path d="M 773 272 L 1045 272" fill="none" stroke="#f47b32" stroke-width="4" marker-end="url(#orange)"/>
+<text x="905" y="255" font-size="27" fill="#f47b32" text-anchor="middle" font-weight="500">None</text>
+<text x="1190" y="283" font-size="28" fill="#f47b32" text-anchor="middle" font-weight="500">None을 반환</text>
+<rect x="115" y="390" width="650" height="74" rx="18" fill="#19222d" stroke="#55d6c2" stroke-width="3"/>
+<text x="440" y="438" font-size="31" fill="#eef3f7" text-anchor="middle" font-weight="500">let right = right?;</text>
+<path d="M 440 466 L 440 516" fill="none" stroke="#55d6c2" stroke-width="4" marker-end="url(#green)"/>
+<text x="470" y="503" font-size="27" fill="#55d6c2" text-anchor="start" font-weight="500">Some(right)</text>
+<path d="M 773 427 L 1045 427" fill="none" stroke="#f47b32" stroke-width="4" marker-end="url(#orange)"/>
+<text x="905" y="410" font-size="27" fill="#f47b32" text-anchor="middle" font-weight="500">None</text>
+<text x="1190" y="438" font-size="28" fill="#f47b32" text-anchor="middle" font-weight="500">None을 반환</text>
+<rect x="115" y="550" width="650" height="80" rx="18" fill="#19222d" stroke="#344556" stroke-width="3"/>
+<text x="440" y="600" font-size="31" fill="#eef3f7" text-anchor="middle" font-weight="500">합과 평균을 계산</text>
+<path d="M 773 590 L 1045 590" fill="none" stroke="#55d6c2" stroke-width="4" marker-end="url(#green)"/>
+<text x="1190" y="582" font-size="28" fill="#55d6c2" text-anchor="middle" font-weight="500">계산 결과를</text>
+<text x="1190" y="621" font-size="28" fill="#55d6c2" text-anchor="middle" font-weight="500">반환</text>
+<text x="95" y="695" font-size="29" fill="#f47b32" text-anchor="start" font-weight="500">None을 만나면 남은 줄은 실행하지 않습니다.</text>
+<text x="56" y="777" font-size="27" fill="#b8c4ce" text-anchor="start" font-weight="500">합이 i32 범위를 벗어나는 경우에도 계산 단계에서 None을 반환합니다.</text>
+</g>
+</svg>

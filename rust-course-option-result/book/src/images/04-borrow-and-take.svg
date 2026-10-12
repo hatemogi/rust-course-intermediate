@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" role="img" aria-labelledby="title desc">
+<title id="title">as_ref와 take: 빌리기와 꺼내기</title>
+<desc id="desc">as_ref는 원본의 String을 빌리는 참조를 반환합니다. take는 원본을 None으로 바꾸고 String의 소유권을 반환값으로 옮깁니다.</desc>
+<defs><marker id="green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#55d6c2"/></marker><marker id="orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f47b32"/></marker></defs>
+<rect width="1440" height="800" rx="28" fill="#10151c"/>
+<g font-family="Pretendard, Apple SD Gothic Neo, Noto Sans KR, sans-serif">
+<text x="56" y="70" font-size="38" fill="#eef3f7" text-anchor="start" font-weight="700">as_ref와 take: 빌리기와 꺼내기</text>
+<text x="56" y="118" font-size="26" fill="#b8c4ce" text-anchor="start" font-weight="500">두 그림은 각각 별도로 실행한 경우입니다. 상자는 메모리 배치가 아닌 값의 관계를 나타냅니다.</text>
+<rect x="40" y="150" width="1360" height="270" rx="18" fill="#19222d" stroke="#344556" stroke-width="3"/>
+<text x="70" y="197" font-size="33" fill="#55d6c2" text-anchor="start" font-weight="700">as_ref(): 원본을 빌리기</text>
+<text x="140" y="246" font-size="28" fill="#b8c4ce" text-anchor="start" font-weight="500">원본 name</text>
+<rect x="120" y="264" width="380" height="105" rx="18" fill="#19222d" stroke="#55d6c2" stroke-width="3"/>
+<text x="310" y="329" font-size="32" fill="#eef3f7" text-anchor="middle" font-weight="500">Some(String)</text>
+<text x="960" y="246" font-size="28" fill="#b8c4ce" text-anchor="start" font-weight="500">반환값</text>
+<rect x="880" y="264" width="420" height="105" rx="18" fill="#19222d" stroke="#55d6c2" stroke-width="3"/>
+<text x="1090" y="329" font-size="32" fill="#eef3f7" text-anchor="middle" font-weight="500">Some(&amp;String)</text>
+<path d="M 870 315 L 510 315" fill="none" stroke="#55d6c2" stroke-width="4" marker-end="url(#green)"/>
+<text x="690" y="294" font-size="27" fill="#55d6c2" text-anchor="middle" font-weight="500">같은 값을 가리킴</text>
+<text x="120" y="402" font-size="27" fill="#eef3f7" text-anchor="start" font-weight="500">원본의 String은 그대로 남습니다. 문자열을 복사하지 않습니다.</text>
+<rect x="40" y="445" width="1360" height="285" rx="18" fill="#19222d" stroke="#344556" stroke-width="3"/>
+<text x="70" y="491" font-size="33" fill="#f47b32" text-anchor="start" font-weight="700">take(): 값을 꺼내기</text>
+<text x="140" y="538" font-size="28" fill="#b8c4ce" text-anchor="start" font-weight="500">호출 전 token</text>
+<rect x="90" y="556" width="350" height="100" rx="18" fill="#19222d" stroke="#f47b32" stroke-width="3"/>
+<text x="265" y="618" font-size="31" fill="#eef3f7" text-anchor="middle" font-weight="500">Some(String)</text>
+<path d="M 450 605 L 545 605" fill="none" stroke="#f47b32" stroke-width="4" marker-end="url(#orange)"/>
+<text x="750" y="538" font-size="28" fill="#b8c4ce" text-anchor="start" font-weight="500">호출 후 token</text>
+<rect x="590" y="556" width="280" height="100" rx="18" fill="#19222d" stroke="#344556" stroke-width="3"/>
+<text x="730" y="618" font-size="32" fill="#eef3f7" text-anchor="middle" font-weight="500">None</text>
+<text x="1040" y="538" font-size="28" fill="#b8c4ce" text-anchor="start" font-weight="500">반환값 owned</text>
+<rect x="950" y="556" width="380" height="100" rx="18" fill="#19222d" stroke="#f47b32" stroke-width="3"/>
+<text x="1140" y="618" font-size="31" fill="#eef3f7" text-anchor="middle" font-weight="500">Some(String)</text>
+<text x="590" y="705" font-size="27" fill="#eef3f7" text-anchor="start" font-weight="500">원래 자리에는 None, 꺼낸 값의 소유권은 반환값으로 이동합니다.</text>
+<path d="M 265 658 L 265 677 L 1140 677 L 1140 658" fill="none" stroke="#f47b32" stroke-width="3" marker-end="url(#orange)"/>
+</g>
+</svg>

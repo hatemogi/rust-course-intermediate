@@ -69,6 +69,50 @@ fn dedent(source: &str) -> String {
         .join("\n")
 }
 
+// 구문 트리에서 린트 속성만 찾아 문자열과 일반 주석은 그대로 둡니다.
+fn without_lint_attributes(source: &str, file: &syn::File, range: Range<usize>) -> String {
+    struct Lints(Vec<Range<usize>>);
+    impl<'ast> syn::visit::Visit<'ast> for Lints {
+        fn visit_attribute(&mut self, attr: &'ast syn::Attribute) {
+            if ["allow", "expect", "warn", "deny", "forbid"]
+                .iter()
+                .any(|name| attr.path().is_ident(name))
+            {
+                self.0.push(attr.span().byte_range());
+            }
+        }
+    }
+    let mut lints = Lints(Vec::new());
+    syn::visit::Visit::visit_file(&mut lints, file);
+    let mut removed = Vec::new();
+    for attr in lints.0 {
+        if attr.start < range.start || attr.end > range.end {
+            continue;
+        }
+        let start = source[..attr.start].rfind('\n').map_or(0, |i| i + 1);
+        let end = source[attr.end..]
+            .find('\n')
+            .map_or(source.len(), |i| attr.end + i);
+        let before = &source[start..attr.start];
+        let after = source[attr.end..end].trim();
+        let standalone = before.trim().is_empty() && (after.is_empty() || after.starts_with("//"));
+        removed.push(if standalone {
+            start.max(range.start)..(end + usize::from(end < source.len())).min(range.end)
+        } else {
+            attr
+        });
+    }
+    removed.sort_by_key(|r| r.start);
+    let mut output = String::new();
+    let mut cursor = range.start;
+    for r in removed {
+        output.push_str(&source[cursor..r.start]);
+        cursor = r.end;
+    }
+    output.push_str(&source[cursor..range.end]);
+    output
+}
+
 fn excerpt(source: &str, mode: &str, selector: &str) -> Result<String> {
     let file = syn::parse_file(source)?;
     let range: Range<usize> = match mode {
@@ -99,11 +143,11 @@ fn excerpt(source: &str, mode: &str, selector: &str) -> Result<String> {
         },
         _ => return Err(format!("지원하지 않는 발췌 방식입니다: {mode}").into()),
     };
-    let text = source.get(range).ok_or("소스 범위가 올바르지 않습니다")?;
+    let text = without_lint_attributes(source, &file, range);
     Ok(if mode == "statements" {
         dedent(text.trim_end())
     } else if mode == "body" {
-        dedent(text)
+        dedent(&text)
     } else {
         text.to_owned()
     })
@@ -238,7 +282,10 @@ mod tests {
         let source = "// 앞 주석\n#[allow(dead_code)]\nfn example<'a>(s: &'a str) -> &'a str {\n    // 주석 {\n    let _ = r#\"문자열 } {\"#;\n    /* { /* } */ } */\n    s\n}\n";
         assert_eq!(
             excerpt(source, "item", "example").unwrap(),
-            source.trim_end().strip_prefix("// 앞 주석\n").unwrap()
+            source
+                .trim_end()
+                .strip_prefix("// 앞 주석\n#[allow(dead_code)]\n")
+                .unwrap()
         );
         assert_eq!(
             excerpt(source, "body", "example").unwrap(),
@@ -248,6 +295,19 @@ mod tests {
             excerpt("fn f() { println!(\"한글\"); }", "body", "f").unwrap(),
             "println!(\"한글\"); "
         );
+    }
+
+    #[test]
+    fn hides_lints_but_preserves_semantic_attributes_and_literals() {
+        let source = "#[allow(\n    dead_code,\n)] // 린트 설명\n#[derive(Debug)]\nstruct Thing;\n#[expect(dead_code)] fn f() {\n    #[allow(unused_variables)] // 지역 변수\n    let x = \"#[allow(dead_code)]\";\n}";
+        let code = excerpt(source, "item", "Thing..f").unwrap();
+        assert!(code.starts_with("#[derive(Debug)]\nstruct Thing;"));
+        assert!(!code.contains("린트 설명"));
+        assert!(!code.contains("지역 변수"));
+        assert!(!code.contains("#[expect"));
+        assert!(code.contains("\"#[allow(dead_code)]\""));
+        let body = excerpt(source, "body", "f").unwrap();
+        assert_eq!(body, "let x = \"#[allow(dead_code)]\";");
     }
 
     #[test]
